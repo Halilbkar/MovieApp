@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 protocol LoginViewProtocol: AnyObject {
+    func presentAlert(title: String, message: String)
     func setViewBackgroundColor(color: UIColor)
     func prepareLoginUIView()
 }
@@ -36,7 +37,7 @@ class LoginViewController: UIViewController {
         super.viewWillLayoutSubviews()
         
         NSLayoutConstraint.activate([
-        
+            
             loginUIView.topAnchor.constraint(equalTo: view.topAnchor),
             loginUIView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             loginUIView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -52,17 +53,24 @@ extension LoginViewController: LoginViewProtocol {
     
     func prepareLoginUIView() {
         view.addSubview(loginUIView)
-
+    }
+    
+    func presentAlert(title: String, message: String) {
+        
     }
 }
 
 // MARK: - LoginUIViewProtocol - Actions
 extension LoginViewController: LoginUIViewProtocol {
     func loginTapped(_ username: String, _ password: String) {
-        
+        presenter.loginButtonTapped(username: username, password: password)
+    }
+    
+    func forgotPassTapped(username: String) {
+        presenter.forgotPassTapped(username: username)
     }
     
     func signUpTapped() {
-        
+        presenter.signUpButtonTapped()
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 protocol LoginUIViewProtocol: AnyObject {
     func loginTapped(_ username: String, _ password: String)
     func signUpTapped()
+    func forgotPassTapped(username: String)
 }
 
 class LoginUIView: UIView {
@@ -18,7 +19,7 @@ class LoginUIView: UIView {
         let label = UILabel()
         
         label.text = "Login"
-        label.font = .boldSystemFont(ofSize: CGFloat.dWidth(padding: 20))
+        label.font = .boldSystemFont(ofSize: CGFloat.dWidth(padding: 24))
         label.textColor = .black
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -30,7 +31,7 @@ class LoginUIView: UIView {
         let label = UILabel()
         
         label.text = "Username"
-        label.font = .boldSystemFont(ofSize: CGFloat.dWidth(padding: 12))
+        label.font = .systemFont(ofSize: CGFloat.dWidth(padding: 12))
         label.textColor = .black
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -42,7 +43,7 @@ class LoginUIView: UIView {
         let label = UILabel()
         
         label.text = "Password"
-        label.font = .boldSystemFont(ofSize: CGFloat.dWidth(padding: 12))
+        label.font = .systemFont(ofSize: CGFloat.dWidth(padding: 12))
         label.textColor = .black
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -81,6 +82,7 @@ class LoginUIView: UIView {
         
         let button = UIButton(configuration: config)
         
+        button.addTarget(self, action: #selector(forgotPassTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -171,6 +173,11 @@ extension LoginUIView {
     @objc func signUpTapped() {
         delegate?.signUpTapped()
     }
+    
+    @objc func forgotPassTapped(username: String) {
+        guard let username = usernameTextField.text else { return }
+        delegate?.forgotPassTapped(username: username)
+    }
 }
 
 // MARK: - Configure Layout
@@ -181,25 +188,28 @@ extension LoginUIView {
             loginLabel.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat.dHeight(padding: 64)),
             loginLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            usernameLabel.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: CGFloat.dHeight(padding: 24)),
+            usernameLabel.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: CGFloat.dHeight(padding: 48)),
             usernameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 24)),
             
-            usernameTextField.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor, constant: CGFloat.dHeight(padding: 4)),
-            usernameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 24)),
-            usernameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -24)),
+            usernameTextField.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor, constant: CGFloat.dHeight(padding: 8)),
+            usernameTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
+            usernameTextField.widthAnchor.constraint(equalToConstant: CGFloat.dWidth(padding: 340)),
+            usernameTextField.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 20)),
             
-            passwordLabel.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: CGFloat.dHeight(padding: 12)),
+            passwordLabel.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: CGFloat.dHeight(padding: 16)),
             passwordLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 24)),
             
-            passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: CGFloat.dHeight(padding: 4)),
-            passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 24)),
-            passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -24)),
+            passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: CGFloat.dHeight(padding: 8)),
+            passwordTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
+            passwordTextField.widthAnchor.constraint(equalToConstant: CGFloat.dWidth(padding: 340)),
+            passwordTextField.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 20)),
             
             forgotPassButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: CGFloat.dHeight(padding: 16)),
             forgotPassButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -8)),
             
             loginButton.topAnchor.constraint(equalTo: forgotPassButton.bottomAnchor, constant: CGFloat.dHeight(padding: 48)),
             loginButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            loginButton.widthAnchor.constraint(equalToConstant: CGFloat.dWidth(padding: 340)),
             
             signUpLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: CGFloat.dHeight(padding: 24)),
             signUpLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
