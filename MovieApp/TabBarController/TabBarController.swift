@@ -7,25 +7,55 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
+protocol TabBarControllerProtocol: AnyObject {
+    func configureTabBar()
+    func setTabBarControllers()
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+final class TabBarController: UITabBarController {
+
+    private let homeModule = HomeRouter.startExecution()
+    private let moviesModule = MoviesRouter.startExecution()
+    private let profileModule = ProfileRouter.startExecution()
+    
+    internal var presenter: TabBarPresenterInputs!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        let vc1 = UINavigationController(rootViewController: HomeViewController())
-        let vc2 = UINavigationController(rootViewController: MoviesViewController())
-        let vc3 = UINavigationController(rootViewController: ProfileViewController())
-        
-        vc1.tabBarItem.image = UIImage(systemName: "house")
-        vc2.tabBarItem.image = UIImage(systemName: "play.circle")
-        vc3.tabBarItem.image = UIImage(systemName: "person.fill")
-        
-        vc1.title = "Home"
-        vc2.title = "Movies"
-        vc3.title = "Profile"
-        
-        tabBar.tintColor = .white
-        setViewControllers([vc1,vc2,vc3], animated: true)
+        presenter.viewWillAppear()
+    }
+}
+
+extension TabBarController: TabBarControllerProtocol {
+    func configureTabBar() {
+        tabBar.backgroundColor = .systemGray5
+        tabBar.tintColor = .label
+        tabBar.layer.shadowOpacity = 0.75
+        tabBar.layer.cornerRadius = 8
+        tabBar.layer.shadowColor = UIColor.systemGray.cgColor
+    }
+    
+    func setTabBarControllers() {
+        setViewControllers(
+            [
+                setController(viewController: homeModule,
+                              title: "Home",
+                              imageName: "house",
+                              selectedImageName: "house.fill"),
+                
+                setController(viewController: moviesModule,
+                              title: "Movies",
+                              imageName: "heart",
+                              selectedImageName: "heart.fill"),
+                
+                
+                setController(viewController: profileModule,
+                              title: "Profile",
+                              imageName: "person",
+                              selectedImageName: "person.fill"),
+            ],
+                           animated: true)
     }
 }
 

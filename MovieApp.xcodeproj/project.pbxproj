@@ -29,6 +29,20 @@
 		EF1CCBAE2A96909100EC4C03 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBAD2A96909100EC4C03 /* ProfileInteractor.swift */; };
 		EF1CCBB02A96909D00EC4C03 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBAF2A96909D00EC4C03 /* ProfilePresenter.swift */; };
 		EF1CCBB22A9690A700EC4C03 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBB12A9690A700EC4C03 /* ProfileRouter.swift */; };
+		EF1CCBBB2A98096100EC4C03 /* +TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBBA2A98096100EC4C03 /* +TabBarController.swift */; };
+		EF1CCBBD2A98098F00EC4C03 /* EndPointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBBC2A98098F00EC4C03 /* EndPointProtocol.swift */; };
+		EF1CCBBF2A9809AD00EC4C03 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBBE2A9809AD00EC4C03 /* NetworkManager.swift */; };
+		EF1CCBC22A9809F600EC4C03 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBC12A9809F600EC4C03 /* NetworkError.swift */; };
+		EF1CCBC42A980A0900EC4C03 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBC32A980A0900EC4C03 /* HTTPMethod.swift */; };
+		EF1CCBC92A9814E700EC4C03 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBC82A9814E700EC4C03 /* LoginRouter.swift */; };
+		EF1CCBCB2A9814F600EC4C03 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBCA2A9814F600EC4C03 /* LoginPresenter.swift */; };
+		EF1CCBCD2A98150400EC4C03 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBCC2A98150400EC4C03 /* LoginInteractor.swift */; };
+		EF1CCBD02A98151300EC4C03 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBCF2A98151300EC4C03 /* LoginViewController.swift */; };
+		EF1CCBD62A98161200EC4C03 /* LoginUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBD52A98161200EC4C03 /* LoginUIView.swift */; };
+		EF7207BB2A98EDA800DFD466 /* +TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207BA2A98EDA800DFD466 /* +TextField.swift */; };
+		EF7207BD2A98FA8F00DFD466 /* TabBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207BC2A98FA8F00DFD466 /* TabBarInteractor.swift */; };
+		EF7207BF2A98FA9700DFD466 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207BE2A98FA9700DFD466 /* TabBarPresenter.swift */; };
+		EF7207C12A98FAA000DFD466 /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207C02A98FAA000DFD466 /* TabBarRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +70,20 @@
 		EF1CCBAD2A96909100EC4C03 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		EF1CCBAF2A96909D00EC4C03 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		EF1CCBB12A9690A700EC4C03 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		EF1CCBBA2A98096100EC4C03 /* +TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+TabBarController.swift"; sourceTree = "<group>"; };
+		EF1CCBBC2A98098F00EC4C03 /* EndPointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointProtocol.swift; sourceTree = "<group>"; };
+		EF1CCBBE2A9809AD00EC4C03 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		EF1CCBC12A9809F600EC4C03 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		EF1CCBC32A980A0900EC4C03 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		EF1CCBC82A9814E700EC4C03 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		EF1CCBCA2A9814F600EC4C03 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		EF1CCBCC2A98150400EC4C03 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		EF1CCBCF2A98151300EC4C03 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EF1CCBD52A98161200EC4C03 /* LoginUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUIView.swift; sourceTree = "<group>"; };
+		EF7207BA2A98EDA800DFD466 /* +TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+TextField.swift"; sourceTree = "<group>"; };
+		EF7207BC2A98FA8F00DFD466 /* TabBarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarInteractor.swift; sourceTree = "<group>"; };
+		EF7207BE2A98FA9700DFD466 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
+		EF7207C02A98FAA000DFD466 /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,13 +116,13 @@
 		EF1CCB582A9670F100EC4C03 /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				EF1CCBC02A9809DC00EC4C03 /* Entities */,
 				EF1CCB982A968F2900EC4C03 /* TabBarController */,
 				EF1CCB6F2A9671BB00EC4C03 /* Module */,
-				EF1CCB842A96800700EC4C03 /* Companents */,
-				EF1CCB712A9671FD00EC4C03 /* Helpers */,
 				EF1CCB6E2A9671AA00EC4C03 /* Manager */,
+				EF1CCB712A9671FD00EC4C03 /* Utilities */,
+				EF1CCBB32A969A4B00EC4C03 /* Core */,
 				EF1CCB6D2A96719B00EC4C03 /* Resources */,
-				EF1CCB622A9670F200EC4C03 /* Assets.xcassets */,
 				EF1CCB672A9670F200EC4C03 /* Info.plist */,
 			);
 			path = MovieApp;
@@ -103,8 +131,7 @@
 		EF1CCB6D2A96719B00EC4C03 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				EF1CCB592A9670F100EC4C03 /* AppDelegate.swift */,
-				EF1CCB5B2A9670F100EC4C03 /* SceneDelegate.swift */,
+				EF1CCB622A9670F200EC4C03 /* Assets.xcassets */,
 				EF1CCB642A9670F200EC4C03 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
@@ -113,6 +140,7 @@
 		EF1CCB6E2A9671AA00EC4C03 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				EF1CCBBE2A9809AD00EC4C03 /* NetworkManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -120,9 +148,10 @@
 		EF1CCB6F2A9671BB00EC4C03 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				EF1CCB722A96720F00EC4C03 /* home-module */,
-				EF1CCB992A968FB900EC4C03 /* movies-module */,
-				EF1CCB9A2A968FC900EC4C03 /* profile-module */,
+				EF1CCBC52A9814C000EC4C03 /* Login */,
+				EF1CCB722A96720F00EC4C03 /* Home */,
+				EF1CCB992A968FB900EC4C03 /* Movies */,
+				EF1CCB9A2A968FC900EC4C03 /* Profile */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -132,179 +161,224 @@
 			children = (
 				EF1CCB852A9682CF00EC4C03 /* +CGFloat.swift */,
 				EF1CCB872A9682E800EC4C03 /* +Cells.swift */,
+				EF1CCBBA2A98096100EC4C03 /* +TabBarController.swift */,
+				EF7207BA2A98EDA800DFD466 /* +TextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		EF1CCB712A9671FD00EC4C03 /* Helpers */ = {
+		EF1CCB712A9671FD00EC4C03 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				EF1CCBB92A9808E800EC4C03 /* Helpers */,
+				EF1CCBB82A9808E100EC4C03 /* Protocols */,
 				EF1CCB702A9671D700EC4C03 /* Extensions */,
 			);
-			path = Helpers;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
-		EF1CCB722A96720F00EC4C03 /* home-module */ = {
+		EF1CCB722A96720F00EC4C03 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				EF1CCB732A96721D00EC4C03 /* view */,
-				EF1CCB742A96722100EC4C03 /* interactor */,
-				EF1CCB772A9672BE00EC4C03 /* presenter */,
-				EF1CCB752A96725900EC4C03 /* router */,
-			);
-			path = "home-module";
-			sourceTree = "<group>";
-		};
-		EF1CCB732A96721D00EC4C03 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				EF1CCB782A9672F900EC4C03 /* HomeViewController.swift */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		EF1CCB742A96722100EC4C03 /* interactor */ = {
-			isa = PBXGroup;
-			children = (
-				EF1CCB7A2A96739100EC4C03 /* HomeInteractor.swift */,
-			);
-			path = interactor;
-			sourceTree = "<group>";
-		};
-		EF1CCB752A96725900EC4C03 /* router */ = {
-			isa = PBXGroup;
-			children = (
-				EF1CCB822A9673E200EC4C03 /* HomeRouter.swift */,
-			);
-			path = router;
-			sourceTree = "<group>";
-		};
-		EF1CCB772A9672BE00EC4C03 /* presenter */ = {
-			isa = PBXGroup;
-			children = (
-				EF1CCB7C2A96739800EC4C03 /* HomePresenter.swift */,
-			);
-			path = presenter;
-			sourceTree = "<group>";
-		};
-		EF1CCB842A96800700EC4C03 /* Companents */ = {
-			isa = PBXGroup;
-			children = (
-				EF1CCB8E2A96840100EC4C03 /* Home */,
-			);
-			path = Companents;
-			sourceTree = "<group>";
-		};
-		EF1CCB8E2A96840100EC4C03 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				EF1CCB932A96892E00EC4C03 /* CollectionViewCells */,
-				EF1CCB8F2A96841E00EC4C03 /* PreviewUIView.swift */,
-				EF1CCB912A9686FD00EC4C03 /* TrendingUIView.swift */,
+				EF1CCB8E2A96840100EC4C03 /* Base */,
+				EF1CCB842A96800700EC4C03 /* UICompannts */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		EF1CCB932A96892E00EC4C03 /* CollectionViewCells */ = {
+		EF1CCB842A96800700EC4C03 /* UICompannts */ = {
+			isa = PBXGroup;
+			children = (
+				EF1CCBB42A969EF100EC4C03 /* CustomViews */,
+				EF1CCB932A96892E00EC4C03 /* Cells */,
+			);
+			path = UICompannts;
+			sourceTree = "<group>";
+		};
+		EF1CCB8E2A96840100EC4C03 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EF1CCB782A9672F900EC4C03 /* HomeViewController.swift */,
+				EF1CCB7A2A96739100EC4C03 /* HomeInteractor.swift */,
+				EF1CCB7C2A96739800EC4C03 /* HomePresenter.swift */,
+				EF1CCB822A9673E200EC4C03 /* HomeRouter.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		EF1CCB932A96892E00EC4C03 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				EF1CCB942A96894B00EC4C03 /* TrendingCollectionViewCell.swift */,
 			);
-			path = CollectionViewCells;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		EF1CCB982A968F2900EC4C03 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
 				EF1CCB962A968EFF00EC4C03 /* TabBarController.swift */,
+				EF7207BC2A98FA8F00DFD466 /* TabBarInteractor.swift */,
+				EF7207BE2A98FA9700DFD466 /* TabBarPresenter.swift */,
+				EF7207C02A98FAA000DFD466 /* TabBarRouter.swift */,
 			);
 			path = TabBarController;
 			sourceTree = "<group>";
 		};
-		EF1CCB992A968FB900EC4C03 /* movies-module */ = {
+		EF1CCB992A968FB900EC4C03 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
-				EF1CCB9E2A968FF000EC4C03 /* view */,
-				EF1CCB9D2A968FE500EC4C03 /* interactor */,
-				EF1CCB9C2A968FDF00EC4C03 /* presenter */,
-				EF1CCB9B2A968FDA00EC4C03 /* router */,
+				EF1CCBB52A969F3C00EC4C03 /* Base */,
+				EF1CCB9E2A968FF000EC4C03 /* UICompanents */,
 			);
-			path = "movies-module";
+			path = Movies;
 			sourceTree = "<group>";
 		};
-		EF1CCB9A2A968FC900EC4C03 /* profile-module */ = {
+		EF1CCB9A2A968FC900EC4C03 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				EF1CCBA42A96902300EC4C03 /* view */,
-				EF1CCBA32A96901E00EC4C03 /* interactor */,
-				EF1CCBA22A96901900EC4C03 /* presenter */,
-				EF1CCBA12A96901500EC4C03 /* router */,
+				EF1CCBA42A96902300EC4C03 /* Base */,
+				EF1CCBA32A96901E00EC4C03 /* UICompanents */,
 			);
-			path = "profile-module";
+			path = Profile;
 			sourceTree = "<group>";
 		};
-		EF1CCB9B2A968FDA00EC4C03 /* router */ = {
+		EF1CCB9E2A968FF000EC4C03 /* UICompanents */ = {
 			isa = PBXGroup;
 			children = (
-				EF1CCBAB2A96908700EC4C03 /* MoviesRouter.swift */,
+				EF1CCBB62A969F6200EC4C03 /* CustomViews */,
+				EF1CCBB72A969F6900EC4C03 /* Cells */,
 			);
-			path = router;
+			path = UICompanents;
 			sourceTree = "<group>";
 		};
-		EF1CCB9C2A968FDF00EC4C03 /* presenter */ = {
+		EF1CCBA12A96901500EC4C03 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				EF1CCBA92A96907E00EC4C03 /* MoviesPresenter.swift */,
 			);
-			path = presenter;
+			path = Cells;
 			sourceTree = "<group>";
 		};
-		EF1CCB9D2A968FE500EC4C03 /* interactor */ = {
+		EF1CCBA22A96901900EC4C03 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				EF1CCBA72A96907200EC4C03 /* MoviesInteractor.swift */,
+				EF1CCBA12A96901500EC4C03 /* Cells */,
 			);
-			path = interactor;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
-		EF1CCB9E2A968FF000EC4C03 /* view */ = {
+		EF1CCBA32A96901E00EC4C03 /* UICompanents */ = {
 			isa = PBXGroup;
 			children = (
-				EF1CCB9F2A96900E00EC4C03 /* MoviesViewController.swift */,
+				EF1CCBA22A96901900EC4C03 /* CustomViews */,
 			);
-			path = view;
+			path = UICompanents;
 			sourceTree = "<group>";
 		};
-		EF1CCBA12A96901500EC4C03 /* router */ = {
-			isa = PBXGroup;
-			children = (
-				EF1CCBB12A9690A700EC4C03 /* ProfileRouter.swift */,
-			);
-			path = router;
-			sourceTree = "<group>";
-		};
-		EF1CCBA22A96901900EC4C03 /* presenter */ = {
-			isa = PBXGroup;
-			children = (
-				EF1CCBAF2A96909D00EC4C03 /* ProfilePresenter.swift */,
-			);
-			path = presenter;
-			sourceTree = "<group>";
-		};
-		EF1CCBA32A96901E00EC4C03 /* interactor */ = {
-			isa = PBXGroup;
-			children = (
-				EF1CCBAD2A96909100EC4C03 /* ProfileInteractor.swift */,
-			);
-			path = interactor;
-			sourceTree = "<group>";
-		};
-		EF1CCBA42A96902300EC4C03 /* view */ = {
+		EF1CCBA42A96902300EC4C03 /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				EF1CCBA52A96903000EC4C03 /* ProfileViewController.swift */,
+				EF1CCBAD2A96909100EC4C03 /* ProfileInteractor.swift */,
+				EF1CCBAF2A96909D00EC4C03 /* ProfilePresenter.swift */,
+				EF1CCBB12A9690A700EC4C03 /* ProfileRouter.swift */,
 			);
-			path = view;
+			path = Base;
+			sourceTree = "<group>";
+		};
+		EF1CCBB32A969A4B00EC4C03 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				EF1CCB5B2A9670F100EC4C03 /* SceneDelegate.swift */,
+				EF1CCB592A9670F100EC4C03 /* AppDelegate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		EF1CCBB42A969EF100EC4C03 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				EF1CCB8F2A96841E00EC4C03 /* PreviewUIView.swift */,
+				EF1CCB912A9686FD00EC4C03 /* TrendingUIView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		EF1CCBB52A969F3C00EC4C03 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EF1CCB9F2A96900E00EC4C03 /* MoviesViewController.swift */,
+				EF1CCBA72A96907200EC4C03 /* MoviesInteractor.swift */,
+				EF1CCBA92A96907E00EC4C03 /* MoviesPresenter.swift */,
+				EF1CCBAB2A96908700EC4C03 /* MoviesRouter.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		EF1CCBB62A969F6200EC4C03 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		EF1CCBB72A969F6900EC4C03 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EF1CCBB82A9808E100EC4C03 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				EF1CCBBC2A98098F00EC4C03 /* EndPointProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		EF1CCBB92A9808E800EC4C03 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		EF1CCBC02A9809DC00EC4C03 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				EF1CCBC12A9809F600EC4C03 /* NetworkError.swift */,
+				EF1CCBC32A980A0900EC4C03 /* HTTPMethod.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		EF1CCBC52A9814C000EC4C03 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EF1CCBC72A9814CD00EC4C03 /* Base */,
+				EF1CCBC62A9814C600EC4C03 /* UICompanents */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		EF1CCBC62A9814C600EC4C03 /* UICompanents */ = {
+			isa = PBXGroup;
+			children = (
+				EF1CCBD52A98161200EC4C03 /* LoginUIView.swift */,
+			);
+			path = UICompanents;
+			sourceTree = "<group>";
+		};
+		EF1CCBC72A9814CD00EC4C03 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EF1CCBCF2A98151300EC4C03 /* LoginViewController.swift */,
+				EF1CCBCC2A98150400EC4C03 /* LoginInteractor.swift */,
+				EF1CCBCA2A9814F600EC4C03 /* LoginPresenter.swift */,
+				EF1CCBC82A9814E700EC4C03 /* LoginRouter.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,25 +451,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF7207C12A98FAA000DFD466 /* TabBarRouter.swift in Sources */,
+				EF1CCBD62A98161200EC4C03 /* LoginUIView.swift in Sources */,
+				EF1CCBBF2A9809AD00EC4C03 /* NetworkManager.swift in Sources */,
 				EF1CCB5A2A9670F100EC4C03 /* AppDelegate.swift in Sources */,
 				EF1CCB972A968EFF00EC4C03 /* TabBarController.swift in Sources */,
 				EF1CCB832A9673E200EC4C03 /* HomeRouter.swift in Sources */,
 				EF1CCB5C2A9670F100EC4C03 /* SceneDelegate.swift in Sources */,
+				EF1CCBD02A98151300EC4C03 /* LoginViewController.swift in Sources */,
 				EF1CCBB22A9690A700EC4C03 /* ProfileRouter.swift in Sources */,
+				EF1CCBBB2A98096100EC4C03 /* +TabBarController.swift in Sources */,
 				EF1CCBA62A96903000EC4C03 /* ProfileViewController.swift in Sources */,
+				EF1CCBC42A980A0900EC4C03 /* HTTPMethod.swift in Sources */,
 				EF1CCB792A9672F900EC4C03 /* HomeViewController.swift in Sources */,
+				EF1CCBC22A9809F600EC4C03 /* NetworkError.swift in Sources */,
 				EF1CCB7D2A96739800EC4C03 /* HomePresenter.swift in Sources */,
+				EF1CCBCB2A9814F600EC4C03 /* LoginPresenter.swift in Sources */,
 				EF1CCB922A9686FD00EC4C03 /* TrendingUIView.swift in Sources */,
 				EF1CCB882A9682E800EC4C03 /* +Cells.swift in Sources */,
 				EF1CCBA02A96900E00EC4C03 /* MoviesViewController.swift in Sources */,
+				EF1CCBCD2A98150400EC4C03 /* LoginInteractor.swift in Sources */,
+				EF1CCBBD2A98098F00EC4C03 /* EndPointProtocol.swift in Sources */,
 				EF1CCBA82A96907200EC4C03 /* MoviesInteractor.swift in Sources */,
 				EF1CCBB02A96909D00EC4C03 /* ProfilePresenter.swift in Sources */,
+				EF7207BB2A98EDA800DFD466 /* +TextField.swift in Sources */,
 				EF1CCBAA2A96907E00EC4C03 /* MoviesPresenter.swift in Sources */,
+				EF7207BD2A98FA8F00DFD466 /* TabBarInteractor.swift in Sources */,
 				EF1CCB862A9682CF00EC4C03 /* +CGFloat.swift in Sources */,
+				EF7207BF2A98FA9700DFD466 /* TabBarPresenter.swift in Sources */,
 				EF1CCB952A96894B00EC4C03 /* TrendingCollectionViewCell.swift in Sources */,
 				EF1CCB7B2A96739100EC4C03 /* HomeInteractor.swift in Sources */,
 				EF1CCB902A96841E00EC4C03 /* PreviewUIView.swift in Sources */,
 				EF1CCBAE2A96909100EC4C03 /* ProfileInteractor.swift in Sources */,
+				EF1CCBC92A9814E700EC4C03 /* LoginRouter.swift in Sources */,
 				EF1CCBAC2A96908700EC4C03 /* MoviesRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
