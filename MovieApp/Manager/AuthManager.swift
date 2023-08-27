@@ -30,11 +30,12 @@ extension AuthManager: AuthManagerProtocol {
                 debugPrint(error)
                 completion(.failure(.loginError))
             } else {
-                if let user = result?.user { // user.isEmailVerified
-                    completion(.success(()))
-                } else {
-                    completion(.failure(.emailNotVerified))
-                }
+                completion(.success(()))
+//                if let user = result?.user { // user.isEmailVerified
+//                    completion(.success(()))
+//                } else {
+//                    completion(.failure(.emailNotVerified))
+//                }
             }
         }
     }
@@ -45,14 +46,15 @@ extension AuthManager: AuthManagerProtocol {
                 debugPrint(error)
                 completion(.failure(.signUpError))
             } else {
-                result?.user.sendEmailVerification { error in
-                    if let error {
-                        debugPrint(error)
-                        completion(.failure(.sendEmailError))
-                    } else {
-                        completion(.success(()))
-                    }
-                }
+                completion(.success(()))
+//                result?.user.sendEmailVerification { error in
+//                    if let error {
+//                        debugPrint(error)
+//                        completion(.failure(.sendEmailError))
+//                    } else {
+//                        completion(.success(()))
+//                    }
+//                }
             }
         }
     }

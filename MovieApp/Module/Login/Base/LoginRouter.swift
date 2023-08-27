@@ -35,13 +35,12 @@ class LoginRouter {
 
 extension LoginRouter: LoginRouterProtocol {
     func toSignUp() {
-//        let signUpModule = SignUpRouter.startSignUp()
-//        view?.navigationController?.pushViewController(signUpModule, animated: true)
+        let signUpModule = SignUpRouter.startExecution()
+        view?.navigationController?.pushViewController(signUpModule, animated: true)
     }
     
     func toHome() {
         let tabBarModule = TabBarRouter.startExecution()
-//        windowManager?.changeRootViewController(tabBarModule, animated: true)
         view?.navigationController?.pushViewController(tabBarModule, animated: true)
     }
 }

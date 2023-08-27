@@ -14,6 +14,7 @@ enum GeneralError: Error {
     case cardInfoMissing
     case emptyBasketError
     case emptyAddressOrCard
+    case passwordsAreDifferent
     
     var localizedDescription: String {
         switch self {
@@ -27,6 +28,8 @@ enum GeneralError: Error {
             return NSLocalizedString("Your basket is empty.", comment: "")
         case .emptyAddressOrCard:
             return NSLocalizedString("You have not selected an address or a card.", comment: "")
+        case .passwordsAreDifferent:
+            return NSLocalizedString("Password & TryPassword must be the same!", comment: "")
         }
     }
 }

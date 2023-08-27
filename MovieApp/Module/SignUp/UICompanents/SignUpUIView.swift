@@ -1,25 +1,35 @@
 //
-//  LoginUIView.swift
+//  SignUpUIView.swift
 //  MovieApp
 //
-//  Created by Halil Bakar on 25.08.2023.
+//  Created by Halil Bakar on 27.08.2023.
 //
 
 import UIKit
 
-protocol LoginUIViewProtocol: AnyObject {
-    func loginTapped(_ username: String, _ password: String)
-    func signUpTapped()
-    func forgotPassTapped(username: String)
+protocol SignUpUIViewProtocol: AnyObject {
+    func signUpTapped(_ name: String,_ username: String,_ password: String,_ tryPass: String)
 }
 
-class LoginUIView: UIView {
+class SignUpUIView: UIView {
     
-    private lazy var loginLabel: UILabel = {
+    private lazy var signUpLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Login"
+        label.text = "Sign Up"
         label.font = .boldSystemFont(ofSize: CGFloat.dWidth(padding: 24))
+        label.textColor = .black
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        
+        label.text = "Name"
+        label.font = .systemFont(ofSize: CGFloat.dWidth(padding: 12))
         label.textColor = .black
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +61,17 @@ class LoginUIView: UIView {
         return label
     }()
     
+    private lazy var nameTextField: UITextField = {
+        let textField = UITextField()
+        
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        textField.setPlaceholder(text: "Type your name", fontSize: 10, color: .systemGray4)
+        textField.addBottomLine(color: .systemGray4, height: 1)
+        
+        return textField
+    }()
+    
     private lazy var usernameTextField: UITextField = {
         let textField = UITextField()
         
@@ -73,49 +94,15 @@ class LoginUIView: UIView {
         return textField
     }()
     
-    private lazy var forgotPassButton: UIButton = {
-        var config = UIButton.Configuration.plain()
+    private lazy var tryPasswordTextField: UITextField = {
+        let textField = UITextField()
         
-        config.title = "Forgot Password ?"
-        config.baseForegroundColor = .black
-        config.buttonSize = .mini
+        textField.translatesAutoresizingMaskIntoConstraints = false
         
-        let button = UIButton(configuration: config)
-        
-        button.addTarget(self, action: #selector(forgotPassTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
-    
-    private lazy var loginButton: UIButton = {
-        var config = UIButton.Configuration.filled()
-        
-        config.cornerStyle = .capsule
-        config.baseForegroundColor = .white
-        config.baseBackgroundColor = .black
-        config.title = "LOGIN"
-        config.attributedTitle?.font = .boldSystemFont(ofSize: 16)
-        config.buttonSize = .medium
-        
-        let button = UIButton(configuration: config)
-        
-        button.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
-    
-    private lazy var signUpLabel: UILabel = {
-        let label = UILabel()
-        
-        label.text = "Or Sign Up Using"
-        label.font = .systemFont(ofSize: CGFloat.dWidth(padding: 10))
-        label.textColor = .black
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
+        textField.setPlaceholder(text: "Type your try password", fontSize: 10, color: .systemGray4)
+        textField.addBottomLine(color: .systemGray4, height: 1)
+
+        return textField
     }()
     
     private lazy var signUpButton: UIButton = {
@@ -125,7 +112,7 @@ class LoginUIView: UIView {
         config.baseForegroundColor = .white
         config.baseBackgroundColor = .black
         config.title = "SIGN UP"
-        config.attributedTitle?.font = .boldSystemFont(ofSize: 12)
+        config.attributedTitle?.font = .boldSystemFont(ofSize: 16)
         config.buttonSize = .medium
         
         let button = UIButton(configuration: config)
@@ -136,22 +123,20 @@ class LoginUIView: UIView {
         return button
     }()
     
-    weak var delegate: LoginUIViewProtocol?
-    
+    weak var delegate: SignUpUIViewProtocol?
+
     override init(frame: CGRect) {
         super .init(frame: frame)
         
-        addSubview(loginLabel)
-        addSubview(usernameLabel)
-        addSubview(usernameTextField)
-        addSubview(passwordLabel)
-        addSubview(passwordTextField)
-        addSubview(forgotPassButton)
-        addSubview(loginButton)
         addSubview(signUpLabel)
+        addSubview(nameLabel)
+        addSubview(usernameLabel)
+        addSubview(passwordLabel)
+        addSubview(usernameTextField)
+        addSubview(nameTextField)
+        addSubview(passwordTextField)
+        addSubview(tryPasswordTextField)
         addSubview(signUpButton)
-        
-        backgroundColor = .clear
     }
     
     override func layoutSubviews() {
@@ -165,32 +150,35 @@ class LoginUIView: UIView {
     }
 }
 
-//MARK: - Actions
-extension LoginUIView {
-    @objc func loginTapped() {
-        guard let username = usernameTextField.text, let password = passwordTextField.text else {return}
-        delegate?.loginTapped(username, password)
-    }
-    
-    @objc func signUpTapped() {
-        delegate?.signUpTapped()
-    }
-    
-    @objc func forgotPassTapped(username: String) {
-        guard let username = usernameTextField.text else { return }
-        delegate?.forgotPassTapped(username: username)
+// MARK: - Actions
+
+extension SignUpUIView {
+    @objc private func signUpTapped() {
+        guard let name = nameTextField.text, let username = usernameTextField.text,
+              let password = passwordTextField.text, let tryPass = tryPasswordTextField.text else { return }
+        
+        delegate?.signUpTapped(name, username, password, tryPass)
     }
 }
 
 // MARK: - Configure Layout
-extension LoginUIView {
+
+extension SignUpUIView {
     func configureLayout() {
         NSLayoutConstraint.activate([
             
-            loginLabel.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat.dHeight(padding: 80)),
-            loginLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            signUpLabel.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat.dHeight(padding: 80)),
+            signUpLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            usernameLabel.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: CGFloat.dHeight(padding: 48)),
+            nameLabel.topAnchor.constraint(equalTo: signUpLabel.bottomAnchor, constant: CGFloat.dHeight(padding: 48)),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 24)),
+            
+            nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: CGFloat.dHeight(padding: 8)),
+            nameTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
+            nameTextField.widthAnchor.constraint(equalToConstant: CGFloat.dWidth(padding: 340)),
+            nameTextField.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 20)),
+            
+            usernameLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: CGFloat.dHeight(padding: 16)),
             usernameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 24)),
             
             usernameTextField.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor, constant: CGFloat.dHeight(padding: 8)),
@@ -206,20 +194,14 @@ extension LoginUIView {
             passwordTextField.widthAnchor.constraint(equalToConstant: CGFloat.dWidth(padding: 340)),
             passwordTextField.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 20)),
             
-            forgotPassButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: CGFloat.dHeight(padding: 16)),
-            forgotPassButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -8)),
+            tryPasswordTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: CGFloat.dHeight(padding: 12)),
+            tryPasswordTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
+            tryPasswordTextField.widthAnchor.constraint(equalToConstant: CGFloat.dWidth(padding: 340)),
+            tryPasswordTextField.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 20)),
             
-            loginButton.topAnchor.constraint(equalTo: forgotPassButton.bottomAnchor, constant: CGFloat.dHeight(padding: 48)),
-            loginButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            loginButton.widthAnchor.constraint(equalToConstant: CGFloat.dWidth(padding: 340)),
-            
-            signUpLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: CGFloat.dHeight(padding: 24)),
-            signUpLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
-            signUpButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: CGFloat.dHeight(padding: -28)),
-            signUpButton.centerXAnchor.constraint(equalTo: centerXAnchor)
+            signUpButton.topAnchor.constraint(equalTo: tryPasswordTextField.bottomAnchor, constant: CGFloat.dHeight(padding: 48)),
+            signUpButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            signUpButton.widthAnchor.constraint(equalToConstant: CGFloat.dWidth(padding: 340)),
         ])
     }
 }
-
-

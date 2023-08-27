@@ -32,15 +32,13 @@ final class LoginInteractor {
 extension LoginInteractor: LoginInteractorInputs {
     func login(username: String, password: String) {
         authManager?.login(email: username, password: password, completion: { [weak self] results in
-            guard let self else { return}
+            guard let self else { return }
             
             switch results {
             case .success(_):
                 presenter?.loginSucceed()
-                print("LoginSuccess")
             case .failure(let error):
                 presenter?.loginFailed(error: error)
-                print("loginFailed")
                 print(error.localizedDescription)
             }
         })

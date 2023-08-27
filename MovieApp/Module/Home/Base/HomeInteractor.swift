@@ -17,7 +17,11 @@ protocol HomeInteractorOutputs: AnyObject {
 
 class HomeInteractor {
     weak var presenter: HomeInteractorOutputs?
-    
+    private let servie: MoviesServiceProtocol?
+        
+    init(servie: MoviesServiceProtocol?) {
+        self.servie = servie
+    }
 }
 
 extension HomeInteractor: HomeInteractorInputs {

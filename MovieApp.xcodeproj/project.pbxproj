@@ -53,6 +53,15 @@
 		EF7207D32A99023A00DFD466 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EF7207D22A99023A00DFD466 /* GoogleSignInSwift */; };
 		EF7207D52A99025E00DFD466 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207D42A99025E00DFD466 /* FirebaseError.swift */; };
 		EF7207D72A9902A600DFD466 /* GeneralError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207D62A9902A600DFD466 /* GeneralError.swift */; };
+		EF7207DE2A9B4A2400DFD466 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207DD2A9B4A2400DFD466 /* SignUpViewController.swift */; };
+		EF7207E02A9B4A3800DFD466 /* SignUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207DF2A9B4A3800DFD466 /* SignUpInteractor.swift */; };
+		EF7207E22A9B4A4100DFD466 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207E12A9B4A4100DFD466 /* SignUpPresenter.swift */; };
+		EF7207E42A9B4A4E00DFD466 /* SignUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207E32A9B4A4E00DFD466 /* SignUpRouter.swift */; };
+		EF7207E62A9B4F2100DFD466 /* SignUpUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207E52A9B4F2100DFD466 /* SignUpUIView.swift */; };
+		EF7207E92A9B5DE100DFD466 /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207E82A9B5DE100DFD466 /* UserInfoManager.swift */; };
+		EF7207F02A9B639600DFD466 /* MoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207EF2A9B639600DFD466 /* MoviesService.swift */; };
+		EF7207F22A9B63A000DFD466 /* MoviesEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207F12A9B63A000DFD466 /* MoviesEndPoint.swift */; };
+		EF7207F42A9B63E800DFD466 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207F32A9B63E800DFD466 /* MovieModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +107,15 @@
 		EF7207CD2A99021700DFD466 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		EF7207D42A99025E00DFD466 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		EF7207D62A9902A600DFD466 /* GeneralError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralError.swift; sourceTree = "<group>"; };
+		EF7207DD2A9B4A2400DFD466 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		EF7207DF2A9B4A3800DFD466 /* SignUpInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInteractor.swift; sourceTree = "<group>"; };
+		EF7207E12A9B4A4100DFD466 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
+		EF7207E32A9B4A4E00DFD466 /* SignUpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRouter.swift; sourceTree = "<group>"; };
+		EF7207E52A9B4F2100DFD466 /* SignUpUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUIView.swift; sourceTree = "<group>"; };
+		EF7207E82A9B5DE100DFD466 /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
+		EF7207EF2A9B639600DFD466 /* MoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesService.swift; sourceTree = "<group>"; };
+		EF7207F12A9B63A000DFD466 /* MoviesEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesEndPoint.swift; sourceTree = "<group>"; };
+		EF7207F32A9B63E800DFD466 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,9 +154,9 @@
 		EF1CCB582A9670F100EC4C03 /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
-				EF1CCBC02A9809DC00EC4C03 /* Entities */,
-				EF1CCB982A968F2900EC4C03 /* TabBarController */,
 				EF1CCB6F2A9671BB00EC4C03 /* Module */,
+				EF7207EC2A9B635000DFD466 /* Services */,
+				EF1CCBC02A9809DC00EC4C03 /* Entities */,
 				EF1CCB6E2A9671AA00EC4C03 /* Manager */,
 				EF1CCB712A9671FD00EC4C03 /* Utilities */,
 				EF1CCBB32A969A4B00EC4C03 /* Core */,
@@ -163,6 +181,7 @@
 			children = (
 				EF1CCBBE2A9809AD00EC4C03 /* NetworkManager.swift */,
 				EF7207CD2A99021700DFD466 /* AuthManager.swift */,
+				EF7207E82A9B5DE100DFD466 /* UserInfoManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -170,7 +189,9 @@
 		EF1CCB6F2A9671BB00EC4C03 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				EF1CCB982A968F2900EC4C03 /* TabBar */,
 				EF1CCBC52A9814C000EC4C03 /* Login */,
+				EF7207DA2A9B49FB00DFD466 /* SignUp */,
 				EF1CCB722A96720F00EC4C03 /* Home */,
 				EF1CCB992A968FB900EC4C03 /* Movies */,
 				EF1CCB9A2A968FC900EC4C03 /* Profile */,
@@ -236,7 +257,7 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		EF1CCB982A968F2900EC4C03 /* TabBarController */ = {
+		EF1CCB982A968F2900EC4C03 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
 				EF1CCB962A968EFF00EC4C03 /* TabBarController.swift */,
@@ -244,7 +265,7 @@
 				EF7207BE2A98FA9700DFD466 /* TabBarPresenter.swift */,
 				EF7207C02A98FAA000DFD466 /* TabBarRouter.swift */,
 			);
-			path = TabBarController;
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		EF1CCB992A968FB900EC4C03 /* Movies */ = {
@@ -369,10 +390,8 @@
 		EF1CCBC02A9809DC00EC4C03 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				EF1CCBC12A9809F600EC4C03 /* NetworkError.swift */,
-				EF1CCBC32A980A0900EC4C03 /* HTTPMethod.swift */,
-				EF7207D42A99025E00DFD466 /* FirebaseError.swift */,
-				EF7207D62A9902A600DFD466 /* GeneralError.swift */,
+				EF7207EB2A9B5EAD00DFD466 /* Models */,
+				EF7207EA2A9B5EA500DFD466 /* Enums */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -403,6 +422,62 @@
 				EF1CCBC82A9814E700EC4C03 /* LoginRouter.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		EF7207DA2A9B49FB00DFD466 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				EF7207DB2A9B4A0800DFD466 /* Base */,
+				EF7207DC2A9B4A0C00DFD466 /* UICompanents */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		EF7207DB2A9B4A0800DFD466 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EF7207DD2A9B4A2400DFD466 /* SignUpViewController.swift */,
+				EF7207DF2A9B4A3800DFD466 /* SignUpInteractor.swift */,
+				EF7207E12A9B4A4100DFD466 /* SignUpPresenter.swift */,
+				EF7207E32A9B4A4E00DFD466 /* SignUpRouter.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		EF7207DC2A9B4A0C00DFD466 /* UICompanents */ = {
+			isa = PBXGroup;
+			children = (
+				EF7207E52A9B4F2100DFD466 /* SignUpUIView.swift */,
+			);
+			path = UICompanents;
+			sourceTree = "<group>";
+		};
+		EF7207EA2A9B5EA500DFD466 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				EF1CCBC12A9809F600EC4C03 /* NetworkError.swift */,
+				EF1CCBC32A980A0900EC4C03 /* HTTPMethod.swift */,
+				EF7207D42A99025E00DFD466 /* FirebaseError.swift */,
+				EF7207D62A9902A600DFD466 /* GeneralError.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		EF7207EB2A9B5EAD00DFD466 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EF7207F32A9B63E800DFD466 /* MovieModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EF7207EC2A9B635000DFD466 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EF7207EF2A9B639600DFD466 /* MoviesService.swift */,
+				EF7207F12A9B63A000DFD466 /* MoviesEndPoint.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -491,18 +566,23 @@
 				EF7207C12A98FAA000DFD466 /* TabBarRouter.swift in Sources */,
 				EF1CCBD62A98161200EC4C03 /* LoginUIView.swift in Sources */,
 				EF1CCBBF2A9809AD00EC4C03 /* NetworkManager.swift in Sources */,
+				EF7207F22A9B63A000DFD466 /* MoviesEndPoint.swift in Sources */,
 				EF1CCB5A2A9670F100EC4C03 /* AppDelegate.swift in Sources */,
 				EF1CCB972A968EFF00EC4C03 /* TabBarController.swift in Sources */,
 				EF1CCB832A9673E200EC4C03 /* HomeRouter.swift in Sources */,
 				EF1CCB5C2A9670F100EC4C03 /* SceneDelegate.swift in Sources */,
 				EF1CCBD02A98151300EC4C03 /* LoginViewController.swift in Sources */,
 				EF1CCBB22A9690A700EC4C03 /* ProfileRouter.swift in Sources */,
+				EF7207E92A9B5DE100DFD466 /* UserInfoManager.swift in Sources */,
+				EF7207E42A9B4A4E00DFD466 /* SignUpRouter.swift in Sources */,
 				EF7207D52A99025E00DFD466 /* FirebaseError.swift in Sources */,
 				EF7207D72A9902A600DFD466 /* GeneralError.swift in Sources */,
 				EF1CCBBB2A98096100EC4C03 /* +TabBarController.swift in Sources */,
 				EF1CCBA62A96903000EC4C03 /* ProfileViewController.swift in Sources */,
+				EF7207E02A9B4A3800DFD466 /* SignUpInteractor.swift in Sources */,
 				EF1CCBC42A980A0900EC4C03 /* HTTPMethod.swift in Sources */,
 				EF1CCB792A9672F900EC4C03 /* HomeViewController.swift in Sources */,
+				EF7207F02A9B639600DFD466 /* MoviesService.swift in Sources */,
 				EF1CCBC22A9809F600EC4C03 /* NetworkError.swift in Sources */,
 				EF1CCB7D2A96739800EC4C03 /* HomePresenter.swift in Sources */,
 				EF1CCBCB2A9814F600EC4C03 /* LoginPresenter.swift in Sources */,
@@ -514,8 +594,10 @@
 				EF1CCBA82A96907200EC4C03 /* MoviesInteractor.swift in Sources */,
 				EF1CCBB02A96909D00EC4C03 /* ProfilePresenter.swift in Sources */,
 				EF7207BB2A98EDA800DFD466 /* +TextField.swift in Sources */,
+				EF7207DE2A9B4A2400DFD466 /* SignUpViewController.swift in Sources */,
 				EF1CCBAA2A96907E00EC4C03 /* MoviesPresenter.swift in Sources */,
 				EF7207BD2A98FA8F00DFD466 /* TabBarInteractor.swift in Sources */,
+				EF7207F42A9B63E800DFD466 /* MovieModel.swift in Sources */,
 				EF1CCB862A9682CF00EC4C03 /* +CGFloat.swift in Sources */,
 				EF7207BF2A98FA9700DFD466 /* TabBarPresenter.swift in Sources */,
 				EF1CCB952A96894B00EC4C03 /* TrendingCollectionViewCell.swift in Sources */,
@@ -524,6 +606,8 @@
 				EF1CCB902A96841E00EC4C03 /* PreviewUIView.swift in Sources */,
 				EF1CCBAE2A96909100EC4C03 /* ProfileInteractor.swift in Sources */,
 				EF1CCBC92A9814E700EC4C03 /* LoginRouter.swift in Sources */,
+				EF7207E22A9B4A4100DFD466 /* SignUpPresenter.swift in Sources */,
+				EF7207E62A9B4F2100DFD466 /* SignUpUIView.swift in Sources */,
 				EF1CCBAC2A96908700EC4C03 /* MoviesRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

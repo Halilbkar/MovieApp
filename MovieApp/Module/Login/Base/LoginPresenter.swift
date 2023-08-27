@@ -19,7 +19,7 @@ class LoginPresenter {
     private let interactor: LoginInteractorInputs?
     private let router: LoginRouterProtocol?
     
-    init(view: LoginViewProtocol, interactor: LoginInteractorInputs?, router: LoginRouterProtocol?) {
+    init(view: LoginViewProtocol, interactor: LoginInteractorInputs, router: LoginRouterProtocol) {
         self.view = view
         self.interactor = interactor
         self.router = router
