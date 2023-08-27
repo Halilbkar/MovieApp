@@ -51,7 +51,7 @@ enum MoviesEndpoint: EndpointProtocol {
     var parameters: [String : Any]? {
         switch self {
         case .trending, .popular, .topRated, .discover, .upComing:
-            return ["api_key": "fda014d72d87416183bdf5250fdef665"]
+            return ["api_key": "f81dc68d4ad164dd20d18f0b531204b6"]
         }
     }
 }

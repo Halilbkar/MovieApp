@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class TrendingCollectionViewCell: UICollectionViewCell {
     
@@ -15,12 +16,14 @@ class TrendingCollectionViewCell: UICollectionViewCell {
         imageView.backgroundColor = .blue
         imageView.layer.cornerRadius = 20
         imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
         
     }()
+    
+    private var model: Results?
     
     override init(frame: CGRect) {
         super .init(frame: frame)
@@ -42,5 +45,10 @@ class TrendingCollectionViewCell: UICollectionViewCell {
     
     required init(coder: NSCoder) {
         fatalError()
+    }
+    
+    internal func showModel(model: Results?) {
+        self.model = model
+        imageView.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w500\(model?.poster_path ?? "")" ))
     }
 }

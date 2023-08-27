@@ -9,6 +9,7 @@ import Foundation
 
 protocol HomePresenterIntputs {
     func viewDidLoad()
+    func showMovies() -> [Results]?
 }
 
 final class HomePresenter {
@@ -32,9 +33,16 @@ extension HomePresenter: HomePresenterIntputs {
         view?.preparePreviewUIView()
         view?.prepareNavBarView()
         view?.dataRefreshed()
+        interactor?.getData()
+    }
+    
+    func showMovies() -> [Results]? {
+        interactor?.showMovies()
     }
 }
 
 extension HomePresenter: HomeInteractorOutputs {
-    
+    func dataRefreshed() {
+        view?.dataRefreshed()
+    }
 }

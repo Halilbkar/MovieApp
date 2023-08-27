@@ -23,7 +23,7 @@ final class HomeRouter {
     static func startExecution() -> UIViewController {
         let view = HomeViewController()
         let router = HomeRouter(view: view)
-        let intercator = HomeInteractor()
+        let intercator = HomeInteractor(service: MoviesService())
         let presenter = HomePresenter(view: view, interactor: intercator, router: router)
         
         view.presenter = presenter

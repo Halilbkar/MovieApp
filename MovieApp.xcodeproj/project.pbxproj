@@ -39,6 +39,7 @@
 		EF1CCBCD2A98150400EC4C03 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBCC2A98150400EC4C03 /* LoginInteractor.swift */; };
 		EF1CCBD02A98151300EC4C03 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBCF2A98151300EC4C03 /* LoginViewController.swift */; };
 		EF1CCBD62A98161200EC4C03 /* LoginUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBD52A98161200EC4C03 /* LoginUIView.swift */; };
+		EF37BAE42A9B7AC700291E72 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = EF37BAE32A9B7AC700291E72 /* SDWebImage */; };
 		EF7207BB2A98EDA800DFD466 /* +TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207BA2A98EDA800DFD466 /* +TextField.swift */; };
 		EF7207BD2A98FA8F00DFD466 /* TabBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207BC2A98FA8F00DFD466 /* TabBarInteractor.swift */; };
 		EF7207BF2A98FA9700DFD466 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207BE2A98FA9700DFD466 /* TabBarPresenter.swift */; };
@@ -126,6 +127,7 @@
 				EF7207D12A99023A00DFD466 /* GoogleSignIn in Frameworks */,
 				EF7207C82A99012C00DFD466 /* FirebaseDatabase in Frameworks */,
 				EF7207CC2A99012C00DFD466 /* FirebaseStorage in Frameworks */,
+				EF37BAE42A9B7AC700291E72 /* SDWebImage in Frameworks */,
 				EF7207D32A99023A00DFD466 /* GoogleSignInSwift in Frameworks */,
 				EF7207C62A99012C00DFD466 /* FirebaseAuth in Frameworks */,
 				EF7207CA2A99012C00DFD466 /* FirebaseFirestore in Frameworks */,
@@ -503,6 +505,7 @@
 				EF7207CB2A99012C00DFD466 /* FirebaseStorage */,
 				EF7207D02A99023A00DFD466 /* GoogleSignIn */,
 				EF7207D22A99023A00DFD466 /* GoogleSignInSwift */,
+				EF37BAE32A9B7AC700291E72 /* SDWebImage */,
 			);
 			productName = MovieApp;
 			productReference = EF1CCB562A9670F100EC4C03 /* MovieApp.app */;
@@ -535,6 +538,7 @@
 			packageReferences = (
 				EF7207C42A99012C00DFD466 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				EF7207CF2A99023A00DFD466 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				EF37BAE22A9B7AC700291E72 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = EF1CCB572A9670F100EC4C03 /* Products */;
 			projectDirPath = "";
@@ -818,6 +822,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		EF37BAE22A9B7AC700291E72 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		EF7207C42A99012C00DFD466 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -837,6 +849,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EF37BAE32A9B7AC700291E72 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF37BAE22A9B7AC700291E72 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		EF7207C52A99012C00DFD466 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EF7207C42A99012C00DFD466 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

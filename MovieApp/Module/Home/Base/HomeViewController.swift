@@ -30,6 +30,7 @@ final class HomeViewController: UIViewController {
     private lazy var trendingUIView: TrendingUIView = {
         let view = TrendingUIView()
         
+        view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -84,10 +85,18 @@ extension HomeViewController: HomeViewProtocol {
     }
     
     func dataRefreshed() {
-        
+        trendingUIView.reloadData()
     }
     
     func setProfileImageAndUserEmail() {
         
+    }
+}
+
+// MARK: - TrendingUIView Protocol
+
+extension HomeViewController: TrendingUIViewProtocol {
+    func showMovies() -> [Results]? {
+        presenter.showMovies()
     }
 }

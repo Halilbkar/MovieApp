@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TrendingUIViewProtocol: AnyObject {
+    func showMovies() -> [Results]?
+}
+
 class TrendingUIView: UIView {
     
     private lazy var label: UILabel = {
@@ -24,7 +28,7 @@ class TrendingUIView: UIView {
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: CGFloat.dWidth(padding: 258), height: CGFloat.dHeight(padding: 336))
+        layout.itemSize = CGSize(width: CGFloat.dWidth(padding: 240), height: CGFloat.dHeight(padding: 336))
         layout.minimumLineSpacing = 24
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -38,6 +42,8 @@ class TrendingUIView: UIView {
         
         return collectionView
     }()
+    
+    weak var delegate: TrendingUIViewProtocol?
 
     override init(frame: CGRect) {
         super .init(frame: frame)
@@ -65,16 +71,22 @@ class TrendingUIView: UIView {
     required init(coder: NSCoder) {
         fatalError()
     }
-
+    
+    func reloadData() {
+        trendingCollectionView.reloadData()
+    }
 }
 
 extension TrendingUIView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return delegate?.showMovies()?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrendingCollectionViewCell.identifier, for: indexPath) as! TrendingCollectionViewCell
+        
+        let movie = delegate?.showMovies()?[indexPath.item]
+        cell.showModel(model: movie)
         
         return cell
     }
