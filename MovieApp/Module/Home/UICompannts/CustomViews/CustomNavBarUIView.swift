@@ -72,7 +72,6 @@ class CustomNavBarUIView: UIView {
             userNameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: CGFloat.dHeight(padding: -12)),
             userNameLabel.leadingAnchor.constraint(equalTo: welcomeLabel.trailingAnchor, constant: CGFloat.dWidth(padding: 8)),
             
-            
             profilePhotoImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: CGFloat.dHeight(padding: -8)),
             profilePhotoImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -24)),
             profilePhotoImageView.widthAnchor.constraint(equalToConstant: CGFloat.dWidth(padding: 36)),

@@ -40,6 +40,12 @@
 		EF1CCBD02A98151300EC4C03 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBCF2A98151300EC4C03 /* LoginViewController.swift */; };
 		EF1CCBD62A98161200EC4C03 /* LoginUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBD52A98161200EC4C03 /* LoginUIView.swift */; };
 		EF37BAE42A9B7AC700291E72 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = EF37BAE32A9B7AC700291E72 /* SDWebImage */; };
+		EF542F772AA12A6A0079286A /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF542F762AA12A6A0079286A /* FavoritesViewController.swift */; };
+		EF542F792AA12A740079286A /* FavoritesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF542F782AA12A740079286A /* FavoritesInteractor.swift */; };
+		EF542F7B2AA12A7F0079286A /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF542F7A2AA12A7F0079286A /* FavoritesPresenter.swift */; };
+		EF542F7D2AA12A890079286A /* FavoritesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF542F7C2AA12A890079286A /* FavoritesRouter.swift */; };
+		EF542F7F2AA12EB50079286A /* FavoritesMoviesUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF542F7E2AA12EB50079286A /* FavoritesMoviesUIView.swift */; };
+		EF542F832AA130390079286A /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF542F822AA130390079286A /* FavoritesTableViewCell.swift */; };
 		EF5A77A92AA0A708009C2078 /* ProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5A77A82AA0A708009C2078 /* ProfileEntity.swift */; };
 		EF5A77AB2AA0B250009C2078 /* UserInfoUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5A77AA2AA0B250009C2078 /* UserInfoUIView.swift */; };
 		EF5A77AD2AA0B273009C2078 /* ProfileItemUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5A77AC2AA0B273009C2078 /* ProfileItemUIView.swift */; };
@@ -110,6 +116,12 @@
 		EF1CCBCC2A98150400EC4C03 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		EF1CCBCF2A98151300EC4C03 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EF1CCBD52A98161200EC4C03 /* LoginUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUIView.swift; sourceTree = "<group>"; };
+		EF542F762AA12A6A0079286A /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		EF542F782AA12A740079286A /* FavoritesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesInteractor.swift; sourceTree = "<group>"; };
+		EF542F7A2AA12A7F0079286A /* FavoritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
+		EF542F7C2AA12A890079286A /* FavoritesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRouter.swift; sourceTree = "<group>"; };
+		EF542F7E2AA12EB50079286A /* FavoritesMoviesUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMoviesUIView.swift; sourceTree = "<group>"; };
+		EF542F822AA130390079286A /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		EF5A77A82AA0A708009C2078 /* ProfileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEntity.swift; sourceTree = "<group>"; };
 		EF5A77AA2AA0B250009C2078 /* UserInfoUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoUIView.swift; sourceTree = "<group>"; };
 		EF5A77AC2AA0B273009C2078 /* ProfileItemUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemUIView.swift; sourceTree = "<group>"; };
@@ -214,6 +226,7 @@
 				EF1CCB982A968F2900EC4C03 /* TabBar */,
 				EF1CCBC52A9814C000EC4C03 /* Login */,
 				EF7207DA2A9B49FB00DFD466 /* SignUp */,
+				EF542F732AA12A320079286A /* Favorites */,
 				EF1CCB722A96720F00EC4C03 /* Home */,
 				EF1CCB992A968FB900EC4C03 /* Movies */,
 				EF1CCB9A2A968FC900EC4C03 /* Profile */,
@@ -456,6 +469,51 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		EF542F732AA12A320079286A /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				EF542F742AA12A570079286A /* Base */,
+				EF542F752AA12A5B0079286A /* UICompanents */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		EF542F742AA12A570079286A /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EF542F762AA12A6A0079286A /* FavoritesViewController.swift */,
+				EF542F782AA12A740079286A /* FavoritesInteractor.swift */,
+				EF542F7A2AA12A7F0079286A /* FavoritesPresenter.swift */,
+				EF542F7C2AA12A890079286A /* FavoritesRouter.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		EF542F752AA12A5B0079286A /* UICompanents */ = {
+			isa = PBXGroup;
+			children = (
+				EF542F802AA130130079286A /* CustomViews */,
+				EF542F812AA1301A0079286A /* Cells */,
+			);
+			path = UICompanents;
+			sourceTree = "<group>";
+		};
+		EF542F802AA130130079286A /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				EF542F7E2AA12EB50079286A /* FavoritesMoviesUIView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		EF542F812AA1301A0079286A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EF542F822AA130390079286A /* FavoritesTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		EF7207DA2A9B49FB00DFD466 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -597,6 +655,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF542F7D2AA12A890079286A /* FavoritesRouter.swift in Sources */,
 				EF7207C12A98FAA000DFD466 /* TabBarRouter.swift in Sources */,
 				EF1CCBD62A98161200EC4C03 /* LoginUIView.swift in Sources */,
 				EF1CCBBF2A9809AD00EC4C03 /* NetworkManager.swift in Sources */,
@@ -607,12 +666,15 @@
 				EF1CCB832A9673E200EC4C03 /* HomeRouter.swift in Sources */,
 				EF1CCB5C2A9670F100EC4C03 /* SceneDelegate.swift in Sources */,
 				EF1CCBD02A98151300EC4C03 /* LoginViewController.swift in Sources */,
+				EF542F772AA12A6A0079286A /* FavoritesViewController.swift in Sources */,
 				EF1CCBB22A9690A700EC4C03 /* ProfileRouter.swift in Sources */,
 				EF7207E92A9B5DE100DFD466 /* UserInfoManager.swift in Sources */,
 				EF7207E42A9B4A4E00DFD466 /* SignUpRouter.swift in Sources */,
 				EF7207D52A99025E00DFD466 /* FirebaseError.swift in Sources */,
 				EF7207D72A9902A600DFD466 /* GeneralError.swift in Sources */,
+				EF542F7F2AA12EB50079286A /* FavoritesMoviesUIView.swift in Sources */,
 				EF5A77AD2AA0B273009C2078 /* ProfileItemUIView.swift in Sources */,
+				EF542F832AA130390079286A /* FavoritesTableViewCell.swift in Sources */,
 				EF5A77B32AA0FD85009C2078 /* CustomNavBarUIView.swift in Sources */,
 				EFA9D9E82A9E50BF00CC9B52 /* MoviesCollectionViewCell.swift in Sources */,
 				EF1CCBBB2A98096100EC4C03 /* +TabBarController.swift in Sources */,
@@ -621,7 +683,9 @@
 				EF1CCBC42A980A0900EC4C03 /* HTTPMethod.swift in Sources */,
 				EF1CCB792A9672F900EC4C03 /* HomeViewController.swift in Sources */,
 				EF7207F02A9B639600DFD466 /* MoviesService.swift in Sources */,
+				EF542F7B2AA12A7F0079286A /* FavoritesPresenter.swift in Sources */,
 				EF1CCBC22A9809F600EC4C03 /* NetworkError.swift in Sources */,
+				EF542F792AA12A740079286A /* FavoritesInteractor.swift in Sources */,
 				EF1CCB7D2A96739800EC4C03 /* HomePresenter.swift in Sources */,
 				EF1CCBCB2A9814F600EC4C03 /* LoginPresenter.swift in Sources */,
 				EF1CCB922A9686FD00EC4C03 /* TrendingUIView.swift in Sources */,

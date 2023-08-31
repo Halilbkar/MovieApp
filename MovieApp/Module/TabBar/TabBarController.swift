@@ -9,6 +9,7 @@ import UIKit
 
 protocol TabBarControllerProtocol: AnyObject {
     func configureTabBar()
+    func configureNavBar()
     func setTabBarControllers()
 }
 
@@ -17,6 +18,7 @@ final class TabBarController: UITabBarController {
     private let homeModule = HomeRouter.startExecution()
     private let moviesModule = MoviesRouter.startExecution()
     private let profileModule = ProfileRouter.startExecution()
+    private let favoritesModule = FavoritesRouter.startExecution()
     
     internal var presenter: TabBarPresenterInputs!
     
@@ -34,6 +36,9 @@ extension TabBarController: TabBarControllerProtocol {
         tabBar.layer.shadowOpacity = 0.75
         tabBar.layer.cornerRadius = 8
         tabBar.layer.shadowColor = UIColor.systemGray.cgColor
+    }
+    
+    func configureNavBar() {
         navigationItem.hidesBackButton = true
     }
     
@@ -47,9 +52,13 @@ extension TabBarController: TabBarControllerProtocol {
                 
                 setController(viewController: moviesModule,
                               title: "Movies",
-                              imageName: "heart",
-                              selectedImageName: "heart.fill"),
+                              imageName: "popcorn",
+                              selectedImageName: "popcorn"),
                 
+                setController(viewController: favoritesModule,
+                              title: "Favorites",
+                              imageName: "heart",
+                              selectedImageName: "heart"),
                 
                 setController(viewController: profileModule,
                               title: "Profile",

@@ -28,6 +28,7 @@ extension TabBarPresenter: TabBarPresenterInputs {
     func viewWillAppear() {
         view?.configureTabBar()
         view?.setTabBarControllers()
+        view?.configureNavBar()
     }
 }
 

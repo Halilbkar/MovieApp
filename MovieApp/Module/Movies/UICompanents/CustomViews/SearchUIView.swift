@@ -39,6 +39,7 @@ class SearchUIView: UIView {
         
         addSubview(label)
         addSubview(searchBar)
+        
     }
     
     override func layoutSubviews() {
