@@ -78,7 +78,7 @@ class UserInfoUIView: UIView {
     }
 
     func showModel(model: CurrentUserModel?) {
-        label.text = model?.userEmail ?? ""
+        label.text = model?.name ?? ""
         imageView.sd_setImage(with: URL(string: model?.profileImageURLString ?? ""))
     }
 }

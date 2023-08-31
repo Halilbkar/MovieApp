@@ -42,5 +42,5 @@ struct ProfileRowItemModel {
 
 struct CurrentUserModel: Equatable {
     let profileImageURLString: String?
-    let userEmail: String?
+    let name: String?
 }

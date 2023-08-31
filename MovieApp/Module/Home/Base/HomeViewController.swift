@@ -13,7 +13,8 @@ protocol HomeViewProtocol: AnyObject {
     func preparePreviewUIView()
     func prepareTrendingUIView()
     func dataRefreshed()
-    func setProfileImageAndUserEmail()
+    func showMoviesImage()
+    func showProfileImageAndEmail(model: CurrentUserModel)
 }
 
 final class HomeViewController: UIViewController {
@@ -36,6 +37,14 @@ final class HomeViewController: UIViewController {
         return view
     }()
     
+    private lazy var customNavBarView: CustomNavBarUIView = {
+        let view = CustomNavBarUIView()
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
     internal var presenter: HomePresenterIntputs!
     
     override func viewDidLoad() {
@@ -49,15 +58,20 @@ final class HomeViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             
-            previewUIView.topAnchor.constraint(equalTo: view.topAnchor),
+            customNavBarView.topAnchor.constraint(equalTo: view.topAnchor),
+            customNavBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            customNavBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            customNavBarView.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 90)),
+            
+            previewUIView.topAnchor.constraint(equalTo: customNavBarView.bottomAnchor),
             previewUIView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             previewUIView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            previewUIView.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 328)),
+            previewUIView.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 300)),
             
             trendingUIView.topAnchor.constraint(equalTo: previewUIView.bottomAnchor),
             trendingUIView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             trendingUIView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            trendingUIView.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 385)),
+            trendingUIView.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 350)),
         ])
     }
 }
@@ -69,7 +83,7 @@ extension HomeViewController: HomeViewProtocol {
     }
     
     func prepareNavBarView() {
-        
+        view.addSubview(customNavBarView)
     }
     
     func preparePreviewUIView() {
@@ -84,8 +98,12 @@ extension HomeViewController: HomeViewProtocol {
         trendingUIView.reloadData()
     }
     
-    func setProfileImageAndUserEmail() {
-        
+    func showMoviesImage() {
+        previewUIView.showMoviesImage()
+    }
+    
+    func showProfileImageAndEmail(model: CurrentUserModel) {
+        customNavBarView.showModel(model: model)
     }
 }
 
@@ -100,7 +118,7 @@ extension HomeViewController: TrendingUIViewProtocol {
 // MARK: - PreviewUIView Protocol
 
 extension HomeViewController: PreviewUIViewProtocol {
-    func showMoviesImage() -> [Results]? {
-        presenter.showMovies()
+    func showMoviesImage() -> Results? {
+        presenter.showMoviesImage()
     }
 }

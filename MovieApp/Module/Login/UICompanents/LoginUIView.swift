@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 protocol LoginUIViewProtocol: AnyObject {
     func loginTapped(_ username: String, _ password: String)
     func signUpTapped()
     func forgotPassTapped(username: String)
+    func googleButtonTapped()
 }
 
 class LoginUIView: UIView {
@@ -58,7 +60,9 @@ class LoginUIView: UIView {
         
         textField.setPlaceholder(text: "Type your username", fontSize: 10, color: .systemGray4)
         textField.addBottomLine(color: .systemGray4, height: 1)
+        textField.addLogo(image: "person.fill")
         
+
         return textField
     }()
     
@@ -69,7 +73,9 @@ class LoginUIView: UIView {
         
         textField.setPlaceholder(text: "Type your password", fontSize: 10, color: .systemGray4)
         textField.addBottomLine(color: .systemGray4, height: 1)
-
+        textField.addLogo(image: "key.horizontal.fill")
+        
+        
         return textField
     }()
     
@@ -118,6 +124,17 @@ class LoginUIView: UIView {
         return label
     }()
     
+    private lazy var googleSignInButton: GIDSignInButton = {
+        let button = GIDSignInButton()
+        
+        button.style = .iconOnly
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
+        
+        return button
+    }()
+    
     private lazy var signUpButton: UIButton = {
         var config = UIButton.Configuration.filled()
         
@@ -149,6 +166,7 @@ class LoginUIView: UIView {
         addSubview(forgotPassButton)
         addSubview(loginButton)
         addSubview(signUpLabel)
+        addSubview(googleSignInButton)
         addSubview(signUpButton)
         
         backgroundColor = .clear
@@ -179,6 +197,10 @@ extension LoginUIView {
     @objc func forgotPassTapped(username: String) {
         guard let username = usernameTextField.text else { return }
         delegate?.forgotPassTapped(username: username)
+    }
+    
+    @objc func googleButtonTapped() {
+        delegate?.googleButtonTapped()
     }
 }
 
@@ -216,7 +238,10 @@ extension LoginUIView {
             signUpLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: CGFloat.dHeight(padding: 24)),
             signUpLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            signUpButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: CGFloat.dHeight(padding: -28)),
+            googleSignInButton.topAnchor.constraint(equalTo: signUpLabel.bottomAnchor, constant: CGFloat.dHeight(padding: 32)),
+            googleSignInButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            signUpButton.topAnchor.constraint(equalTo: googleSignInButton.bottomAnchor, constant: CGFloat.dHeight(padding: 60)),
             signUpButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

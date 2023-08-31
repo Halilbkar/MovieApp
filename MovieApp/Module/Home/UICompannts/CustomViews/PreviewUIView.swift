@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 protocol PreviewUIViewProtocol: AnyObject {
-    func showMoviesImage() -> [Results]?
+    func showMoviesImage() -> Results?
 }
 
 class PreviewUIView: UIView {
@@ -17,7 +17,7 @@ class PreviewUIView: UIView {
     private lazy var label: UILabel = {
         let label = UILabel()
         
-        label.text = "Movie"
+        label.text = "Editor's choice"
         label.textColor = .white
         label.font = .boldSystemFont(ofSize: CGFloat.dWidth(padding: 20))
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -25,10 +25,22 @@ class PreviewUIView: UIView {
         return label
     }()
     
-    private lazy var imageView: UIImageView = {
+    private lazy var imageViewOne: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.backgroundColor = .red
+        imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 12
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+    
+    private lazy var imageViewTwo: UIImageView = {
+        let imageView = UIImageView()
+        
+        imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 12
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -37,13 +49,12 @@ class PreviewUIView: UIView {
     
     weak var delegate: PreviewUIViewProtocol?
     
-    private var results: [Results] = []
-    
     override init(frame: CGRect) {
         super .init(frame: frame)
                 
         addSubview(label)
-        addSubview(imageView)
+        addSubview(imageViewOne)
+        addSubview(imageViewTwo)
     }
     
     override func layoutSubviews() {
@@ -51,14 +62,19 @@ class PreviewUIView: UIView {
         
         NSLayoutConstraint.activate([
             
-            label.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat.dHeight(padding: 44)),
+            label.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat.dHeight(padding: 24)),
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 24)),
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -137)),
         
-            imageView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: CGFloat.dHeight(padding: 28)),
-            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 191)),
-            imageView.widthAnchor.constraint(equalToConstant: CGFloat.dWidth(padding: 327))
+            imageViewOne.topAnchor.constraint(equalTo: label.bottomAnchor, constant: CGFloat.dHeight(padding: 20)),
+            imageViewOne.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 25)),
+            imageViewOne.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 210)),
+            imageViewOne.widthAnchor.constraint(equalToConstant: CGFloat.dWidth(padding: 150)),
+            
+            imageViewTwo.topAnchor.constraint(equalTo: label.bottomAnchor, constant: CGFloat.dHeight(padding: 20)),
+            imageViewTwo.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -25)),
+            imageViewTwo.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 210)),
+            imageViewTwo.widthAnchor.constraint(equalToConstant: CGFloat.dWidth(padding: 150))
         ])
     }
     
@@ -66,7 +82,10 @@ class PreviewUIView: UIView {
         fatalError()
     }
     
-    func showImage() {
-        results = delegate?.showMoviesImage() ?? []
+    func showMoviesImage() {
+        imageViewOne.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w500\(delegate?.showMoviesImage()?.poster_path ?? "")" ))
+        imageViewTwo.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w500\(delegate?.showMoviesImage()?.poster_path ?? "")" ))
+        imageViewOne.reloadInputViews()
+        imageViewTwo.reloadInputViews()
     }
 }

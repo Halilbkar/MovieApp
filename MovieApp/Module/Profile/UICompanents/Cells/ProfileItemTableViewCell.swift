@@ -54,8 +54,8 @@ class ProfileItemTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
         
             hStackView.topAnchor.constraint(equalTo: topAnchor),
-            hStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 5)),
-            hStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -5)),
+            hStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 20)),
+            hStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -20)),
             hStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }

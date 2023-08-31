@@ -9,15 +9,15 @@ import Foundation
 import FirebaseAuth
 
 protocol UserInfoManagerProtocol {
-    func getUserProfilePictureAndEmail(completion: @escaping (_ photo: String?, _ email: String?) -> Void)
+    func getUserProfilePictureAndEmail(completion: @escaping (_ photo: String?, _ name: String?) -> Void)
     func getUserUid() -> String?
 }
 
 final class UserInfoManager: UserInfoManagerProtocol {
-    func getUserProfilePictureAndEmail(completion: @escaping (_ photo: String?, _ email: String?) -> Void) {
+    func getUserProfilePictureAndEmail(completion: @escaping (_ photo: String?, _ name: String?) -> Void) {
         if let currentUser = Auth.auth().currentUser {
             let profileImageURL = currentUser.photoURL
-            completion(profileImageURL?.absoluteString, currentUser.email)
+            completion(profileImageURL?.absoluteString, currentUser.displayName)
         } else {
             completion(nil, nil)
         }

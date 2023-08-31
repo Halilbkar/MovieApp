@@ -44,6 +44,7 @@
 		EF5A77AB2AA0B250009C2078 /* UserInfoUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5A77AA2AA0B250009C2078 /* UserInfoUIView.swift */; };
 		EF5A77AD2AA0B273009C2078 /* ProfileItemUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5A77AC2AA0B273009C2078 /* ProfileItemUIView.swift */; };
 		EF5A77AF2AA0B3AC009C2078 /* ProfileItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5A77AE2AA0B3AC009C2078 /* ProfileItemTableViewCell.swift */; };
+		EF5A77B32AA0FD85009C2078 /* CustomNavBarUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5A77B22AA0FD85009C2078 /* CustomNavBarUIView.swift */; };
 		EF7207BB2A98EDA800DFD466 /* +TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207BA2A98EDA800DFD466 /* +TextField.swift */; };
 		EF7207BD2A98FA8F00DFD466 /* TabBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207BC2A98FA8F00DFD466 /* TabBarInteractor.swift */; };
 		EF7207BF2A98FA9700DFD466 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207BE2A98FA9700DFD466 /* TabBarPresenter.swift */; };
@@ -113,6 +114,7 @@
 		EF5A77AA2AA0B250009C2078 /* UserInfoUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoUIView.swift; sourceTree = "<group>"; };
 		EF5A77AC2AA0B273009C2078 /* ProfileItemUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemUIView.swift; sourceTree = "<group>"; };
 		EF5A77AE2AA0B3AC009C2078 /* ProfileItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemTableViewCell.swift; sourceTree = "<group>"; };
+		EF5A77B22AA0FD85009C2078 /* CustomNavBarUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarUIView.swift; sourceTree = "<group>"; };
 		EF7207BA2A98EDA800DFD466 /* +TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+TextField.swift"; sourceTree = "<group>"; };
 		EF7207BC2A98FA8F00DFD466 /* TabBarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarInteractor.swift; sourceTree = "<group>"; };
 		EF7207BE2A98FA9700DFD466 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 			children = (
 				EF1CCB8F2A96841E00EC4C03 /* PreviewUIView.swift */,
 				EF1CCB912A9686FD00EC4C03 /* TrendingUIView.swift */,
+				EF5A77B22AA0FD85009C2078 /* CustomNavBarUIView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				EF7207D52A99025E00DFD466 /* FirebaseError.swift in Sources */,
 				EF7207D72A9902A600DFD466 /* GeneralError.swift in Sources */,
 				EF5A77AD2AA0B273009C2078 /* ProfileItemUIView.swift in Sources */,
+				EF5A77B32AA0FD85009C2078 /* CustomNavBarUIView.swift in Sources */,
 				EFA9D9E82A9E50BF00CC9B52 /* MoviesCollectionViewCell.swift in Sources */,
 				EF1CCBBB2A98096100EC4C03 /* +TabBarController.swift in Sources */,
 				EF1CCBA62A96903000EC4C03 /* ProfileViewController.swift in Sources */,

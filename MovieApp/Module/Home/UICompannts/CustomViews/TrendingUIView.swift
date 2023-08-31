@@ -28,7 +28,7 @@ class TrendingUIView: UIView {
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: CGFloat.dWidth(padding: 240), height: CGFloat.dHeight(padding: 336))
+        layout.itemSize = CGSize(width: CGFloat.dWidth(padding: 220), height: CGFloat.dHeight(padding: 280))
         layout.minimumLineSpacing = 24
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -61,7 +61,7 @@ class TrendingUIView: UIView {
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 24)),
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -252)),
             
-            trendingCollectionView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: CGFloat.dHeight(padding: 24)),
+            trendingCollectionView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: CGFloat.dHeight(padding: 4)),
             trendingCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             trendingCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             trendingCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)

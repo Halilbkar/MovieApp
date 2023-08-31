@@ -9,9 +9,11 @@ import Foundation
 
 protocol LoginPresenterInputs {
     func viewDidLoad()
+    func viewWillAppear()
     func loginButtonTapped(username: String, password: String)
     func forgotPassTapped(username: String)
     func signUpButtonTapped()
+    func googleButtonTapped()
 }
 
 class LoginPresenter {
@@ -32,6 +34,10 @@ extension LoginPresenter: LoginPresenterInputs {
         view?.prepareLoginUIView()
     }
     
+    func viewWillAppear() {
+        view?.setNavBarAndTabBarVisibility()
+    }
+    
     func loginButtonTapped(username: String, password: String) {
         guard !username.isEmpty,
               !password.isEmpty
@@ -47,6 +53,10 @@ extension LoginPresenter: LoginPresenterInputs {
         interactor?.forgotPassword(username: username)
     }
     
+    func googleButtonTapped() {
+        interactor?.googleSingIn()
+    }
+    
     func signUpButtonTapped() {
         router?.toSignUp()
     }
@@ -54,7 +64,7 @@ extension LoginPresenter: LoginPresenterInputs {
 
 extension LoginPresenter: LoginInteractorOutputs {
     func loginFailed(error: FirebaseError) {
-        
+        print(error.localizedDescription)
     }
     
     func loginSucceed() {

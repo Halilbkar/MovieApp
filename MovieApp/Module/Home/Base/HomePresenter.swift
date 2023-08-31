@@ -10,6 +10,7 @@ import Foundation
 protocol HomePresenterIntputs {
     func viewDidLoad()
     func showMovies() -> [Results]?
+    func showMoviesImage() -> Results?
 }
 
 final class HomePresenter {
@@ -27,21 +28,34 @@ final class HomePresenter {
 extension HomePresenter: HomePresenterIntputs {
     func viewDidLoad() {
         view?.setViewBackgroundColor(color: "background")
-        view?.setProfileImageAndUserEmail()
         view?.prepareTrendingUIView()
         view?.preparePreviewUIView()
         view?.prepareNavBarView()
         view?.dataRefreshed()
+        view?.showMoviesImage()
         interactor?.getData()
+        interactor?.getUserProfilePictureAndEmail()
     }
     
     func showMovies() -> [Results]? {
         interactor?.showMovies()
+    }
+    
+    func showMoviesImage() -> Results? {
+        interactor?.showMovies().randomElement()
     }
 }
 
 extension HomePresenter: HomeInteractorOutputs {
     func dataRefreshed() {
         view?.dataRefreshed()
+    }
+    
+    func showMoviesImage() {
+        view?.showMoviesImage()
+    }
+    
+    func showProfileImageAndEmail(model: CurrentUserModel) {
+        view?.showProfileImageAndEmail(model: model)
     }
 }

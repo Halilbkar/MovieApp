@@ -34,6 +34,7 @@ extension TabBarController: TabBarControllerProtocol {
         tabBar.layer.shadowOpacity = 0.75
         tabBar.layer.cornerRadius = 8
         tabBar.layer.shadowColor = UIColor.systemGray.cgColor
+        navigationItem.hidesBackButton = true
     }
     
     func setTabBarControllers() {

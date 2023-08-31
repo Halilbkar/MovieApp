@@ -37,9 +37,9 @@ class ProfileInteractor  {
 
 extension ProfileInteractor: ProfileInteractorInputs {
     func getuserInfo() {
-        userInfoManager?.getUserProfilePictureAndEmail(completion: { [weak self] photo, email in
+        userInfoManager?.getUserProfilePictureAndEmail(completion: { [weak self] photo, name in
             guard let self else { return }
-            let model: CurrentUserModel = .init(profileImageURLString: photo, userEmail: email)
+            let model: CurrentUserModel = .init(profileImageURLString: photo, name: name)
             presenter?.showUserInfo(model: model)
         })
     }

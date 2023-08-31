@@ -12,6 +12,7 @@ protocol LoginViewProtocol: AnyObject {
     func presentAlert(title: String, message: String)
     func setViewBackgroundColor(color: UIColor)
     func prepareLoginUIView()
+    func setNavBarAndTabBarVisibility()
 }
 
 class LoginViewController: UIViewController {
@@ -31,6 +32,12 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         presenter.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter.viewWillAppear()
     }
     
     override func viewWillLayoutSubviews() {
@@ -55,6 +62,11 @@ extension LoginViewController: LoginViewProtocol {
         view.addSubview(loginUIView)
     }
     
+    func setNavBarAndTabBarVisibility() {
+        navigationItem.hidesBackButton = true
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     func presentAlert(title: String, message: String) {
         
     }
@@ -72,5 +84,9 @@ extension LoginViewController: LoginUIViewProtocol {
     
     func signUpTapped() {
         presenter.signUpButtonTapped()
+    }
+    
+    func googleButtonTapped() {
+        presenter.googleButtonTapped()
     }
 }

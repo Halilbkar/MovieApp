@@ -10,24 +10,30 @@ import Foundation
 protocol HomeInteractorInputs {
     func getData()
     func showMovies() -> [Results]
+    func getUserProfilePictureAndEmail()
 }
 
 protocol HomeInteractorOutputs: AnyObject {
     func dataRefreshed()
+    func showMoviesImage()
+    func showProfileImageAndEmail(model: CurrentUserModel)
 }
 
 class HomeInteractor {
     weak var presenter: HomeInteractorOutputs?
     private let service: MoviesServiceProtocol?
+    private let userInfoManager: UserInfoManagerProtocol?
     
     private var movies: [Results] = [] {
         didSet {
             presenter?.dataRefreshed()
+            presenter?.showMoviesImage()
         }
     }
         
-    init(service: MoviesServiceProtocol?) {
+    init(service: MoviesServiceProtocol, userInfoManager: UserInfoManagerProtocol) {
         self.service = service
+        self.userInfoManager = userInfoManager
     }
 }
 
@@ -52,5 +58,14 @@ extension HomeInteractor: HomeInteractorInputs {
     
     func showMovies() -> [Results] {
         return self.movies
+    }
+    
+    func getUserProfilePictureAndEmail() {
+        userInfoManager?.getUserProfilePictureAndEmail(completion: { [weak self] photo, name in
+            guard let self else { return }
+            
+            let model: CurrentUserModel = .init(profileImageURLString: photo, name: name)
+            self.presenter?.showProfileImageAndEmail(model: model)
+        })
     }
 }

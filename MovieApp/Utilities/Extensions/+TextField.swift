@@ -26,4 +26,11 @@ extension UITextField {
            self.layer.shadowOpacity = 1.0
            self.layer.shadowRadius = 0.0
        }
+    
+    func addLogo(image: String) {
+        let logoImageView = UIImageView(image: UIImage(systemName: image))
+        
+        self.leftView = logoImageView
+        self.leftViewMode = .always
+    }
 }
