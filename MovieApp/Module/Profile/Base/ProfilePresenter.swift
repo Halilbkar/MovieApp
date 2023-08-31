@@ -8,7 +8,9 @@
 import Foundation
 
 protocol ProfilePresenterProtocol {
-
+    func viewDidLoad()
+    func showItems() -> [ProfileRowItemModel]?
+    func signOutTapped()
 }
 
 class ProfilePresenter {
@@ -24,10 +26,29 @@ class ProfilePresenter {
 }
 
 extension ProfilePresenter: ProfilePresenterProtocol {
+    func viewDidLoad() {
+        view?.setBackgroundColor(color: "background")
+        view?.prepareUserInfoView()
+        view?.prepareProfileItemView()
+        interactor?.getuserInfo()
+    }
     
+    func showItems() -> [ProfileRowItemModel]? {
+        interactor?.showItems()
+    }
+    
+    func signOutTapped() {
+        interactor?.signOut()
+    }
 }
 
 extension ProfilePresenter: ProfileInteractorOutputs {
+    func showUserInfo(model: CurrentUserModel?) {
+        view?.showUserInfo(model: model)
+    }
     
+    func signOutCompleted() {
+        router?.toLogin()
+    }
 }
 

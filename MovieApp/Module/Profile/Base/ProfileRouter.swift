@@ -9,7 +9,7 @@ import Foundation
 import UIKit.UIViewController
 
 protocol ProfileRouterProtocol {
-    
+    func toLogin()
 }
 
 class ProfileRouter {
@@ -23,7 +23,7 @@ class ProfileRouter {
     static func startExecution() -> UIViewController {
         let view = ProfileViewController()
         let router = ProfileRouter(view: view)
-        let interactor = ProfileInteractor()
+        let interactor = ProfileInteractor(userInfoManager: UserInfoManager(), authManager: AuthManager())
         let presenter = ProfilePresenter(view: view, interactor: interactor, router: router)
         
         view.presenter = presenter
@@ -34,6 +34,9 @@ class ProfileRouter {
 }
 
 extension ProfileRouter: ProfileRouterProtocol {
-    
+    func toLogin() {
+        let loginModule = LoginRouter.startExecution()
+        view?.navigationController?.pushViewController(loginModule, animated: true)
+    }
 }
 

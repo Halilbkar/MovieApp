@@ -40,6 +40,10 @@
 		EF1CCBD02A98151300EC4C03 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBCF2A98151300EC4C03 /* LoginViewController.swift */; };
 		EF1CCBD62A98161200EC4C03 /* LoginUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBD52A98161200EC4C03 /* LoginUIView.swift */; };
 		EF37BAE42A9B7AC700291E72 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = EF37BAE32A9B7AC700291E72 /* SDWebImage */; };
+		EF5A77A92AA0A708009C2078 /* ProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5A77A82AA0A708009C2078 /* ProfileEntity.swift */; };
+		EF5A77AB2AA0B250009C2078 /* UserInfoUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5A77AA2AA0B250009C2078 /* UserInfoUIView.swift */; };
+		EF5A77AD2AA0B273009C2078 /* ProfileItemUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5A77AC2AA0B273009C2078 /* ProfileItemUIView.swift */; };
+		EF5A77AF2AA0B3AC009C2078 /* ProfileItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5A77AE2AA0B3AC009C2078 /* ProfileItemTableViewCell.swift */; };
 		EF7207BB2A98EDA800DFD466 /* +TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207BA2A98EDA800DFD466 /* +TextField.swift */; };
 		EF7207BD2A98FA8F00DFD466 /* TabBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207BC2A98FA8F00DFD466 /* TabBarInteractor.swift */; };
 		EF7207BF2A98FA9700DFD466 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207BE2A98FA9700DFD466 /* TabBarPresenter.swift */; };
@@ -105,6 +109,10 @@
 		EF1CCBCC2A98150400EC4C03 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		EF1CCBCF2A98151300EC4C03 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EF1CCBD52A98161200EC4C03 /* LoginUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUIView.swift; sourceTree = "<group>"; };
+		EF5A77A82AA0A708009C2078 /* ProfileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEntity.swift; sourceTree = "<group>"; };
+		EF5A77AA2AA0B250009C2078 /* UserInfoUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoUIView.swift; sourceTree = "<group>"; };
+		EF5A77AC2AA0B273009C2078 /* ProfileItemUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemUIView.swift; sourceTree = "<group>"; };
+		EF5A77AE2AA0B3AC009C2078 /* ProfileItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemTableViewCell.swift; sourceTree = "<group>"; };
 		EF7207BA2A98EDA800DFD466 /* +TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+TextField.swift"; sourceTree = "<group>"; };
 		EF7207BC2A98FA8F00DFD466 /* TabBarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarInteractor.swift; sourceTree = "<group>"; };
 		EF7207BE2A98FA9700DFD466 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
@@ -310,6 +318,7 @@
 		EF1CCBA12A96901500EC4C03 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				EF5A77AE2AA0B3AC009C2078 /* ProfileItemTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -317,7 +326,8 @@
 		EF1CCBA22A96901900EC4C03 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				EF1CCBA12A96901500EC4C03 /* Cells */,
+				EF5A77AA2AA0B250009C2078 /* UserInfoUIView.swift */,
+				EF5A77AC2AA0B273009C2078 /* ProfileItemUIView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -326,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				EF1CCBA22A96901900EC4C03 /* CustomViews */,
+				EF1CCBA12A96901500EC4C03 /* Cells */,
 			);
 			path = UICompanents;
 			sourceTree = "<group>";
@@ -337,6 +348,7 @@
 				EF1CCBAD2A96909100EC4C03 /* ProfileInteractor.swift */,
 				EF1CCBAF2A96909D00EC4C03 /* ProfilePresenter.swift */,
 				EF1CCBB12A9690A700EC4C03 /* ProfileRouter.swift */,
+				EF5A77A82AA0A708009C2078 /* ProfileEntity.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -597,6 +609,7 @@
 				EF7207E42A9B4A4E00DFD466 /* SignUpRouter.swift in Sources */,
 				EF7207D52A99025E00DFD466 /* FirebaseError.swift in Sources */,
 				EF7207D72A9902A600DFD466 /* GeneralError.swift in Sources */,
+				EF5A77AD2AA0B273009C2078 /* ProfileItemUIView.swift in Sources */,
 				EFA9D9E82A9E50BF00CC9B52 /* MoviesCollectionViewCell.swift in Sources */,
 				EF1CCBBB2A98096100EC4C03 /* +TabBarController.swift in Sources */,
 				EF1CCBA62A96903000EC4C03 /* ProfileViewController.swift in Sources */,
@@ -613,6 +626,7 @@
 				EF1CCBA02A96900E00EC4C03 /* MoviesViewController.swift in Sources */,
 				EF1CCBCD2A98150400EC4C03 /* LoginInteractor.swift in Sources */,
 				EF1CCBBD2A98098F00EC4C03 /* EndPointProtocol.swift in Sources */,
+				EF5A77AB2AA0B250009C2078 /* UserInfoUIView.swift in Sources */,
 				EF1CCBA82A96907200EC4C03 /* MoviesInteractor.swift in Sources */,
 				EFA9D9E02A9E3D6600CC9B52 /* SearchUIView.swift in Sources */,
 				EF1CCBB02A96909D00EC4C03 /* ProfilePresenter.swift in Sources */,
@@ -622,11 +636,13 @@
 				EF1CCBAA2A96907E00EC4C03 /* MoviesPresenter.swift in Sources */,
 				EF7207BD2A98FA8F00DFD466 /* TabBarInteractor.swift in Sources */,
 				EF7207F42A9B63E800DFD466 /* MovieModel.swift in Sources */,
+				EF5A77A92AA0A708009C2078 /* ProfileEntity.swift in Sources */,
 				EF1CCB862A9682CF00EC4C03 /* +CGFloat.swift in Sources */,
 				EF7207BF2A98FA9700DFD466 /* TabBarPresenter.swift in Sources */,
 				EF1CCB952A96894B00EC4C03 /* TrendingCollectionViewCell.swift in Sources */,
 				EF7207CE2A99021700DFD466 /* AuthManager.swift in Sources */,
 				EF1CCB7B2A96739100EC4C03 /* HomeInteractor.swift in Sources */,
+				EF5A77AF2AA0B3AC009C2078 /* ProfileItemTableViewCell.swift in Sources */,
 				EF1CCB902A96841E00EC4C03 /* PreviewUIView.swift in Sources */,
 				EF1CCBAE2A96909100EC4C03 /* ProfileInteractor.swift in Sources */,
 				EF1CCBC92A9814E700EC4C03 /* LoginRouter.swift in Sources */,

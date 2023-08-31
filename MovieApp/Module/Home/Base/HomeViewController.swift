@@ -12,7 +12,6 @@ protocol HomeViewProtocol: AnyObject {
     func prepareNavBarView()
     func preparePreviewUIView()
     func prepareTrendingUIView()
-    func randomMovies()
     func dataRefreshed()
     func setProfileImageAndUserEmail()
 }
@@ -22,6 +21,7 @@ final class HomeViewController: UIViewController {
     private lazy var previewUIView: PreviewUIView = {
         let view = PreviewUIView()
         
+        view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -80,10 +80,6 @@ extension HomeViewController: HomeViewProtocol {
         view.addSubview(trendingUIView)
     }
     
-    func randomMovies() {
-        
-    }
-    
     func dataRefreshed() {
         trendingUIView.reloadData()
     }
@@ -97,6 +93,14 @@ extension HomeViewController: HomeViewProtocol {
 
 extension HomeViewController: TrendingUIViewProtocol {
     func showMovies() -> [Results]? {
+        presenter.showMovies()
+    }
+}
+
+// MARK: - PreviewUIView Protocol
+
+extension HomeViewController: PreviewUIViewProtocol {
+    func showMoviesImage() -> [Results]? {
         presenter.showMovies()
     }
 }

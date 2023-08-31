@@ -6,6 +6,11 @@
 //
 
 import UIKit
+import SDWebImage
+
+protocol PreviewUIViewProtocol: AnyObject {
+    func showMoviesImage() -> [Results]?
+}
 
 class PreviewUIView: UIView {
     
@@ -23,13 +28,17 @@ class PreviewUIView: UIView {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.backgroundColor = .blue
+        imageView.backgroundColor = .red
         imageView.layer.cornerRadius = 12
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
     }()
-
+    
+    weak var delegate: PreviewUIViewProtocol?
+    
+    private var results: [Results] = []
+    
     override init(frame: CGRect) {
         super .init(frame: frame)
                 
@@ -55,5 +64,9 @@ class PreviewUIView: UIView {
     
     required init(coder: NSCoder) {
         fatalError()
+    }
+    
+    func showImage() {
+        results = delegate?.showMoviesImage() ?? []
     }
 }

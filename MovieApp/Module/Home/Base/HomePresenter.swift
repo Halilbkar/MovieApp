@@ -28,7 +28,6 @@ extension HomePresenter: HomePresenterIntputs {
     func viewDidLoad() {
         view?.setViewBackgroundColor(color: "background")
         view?.setProfileImageAndUserEmail()
-        view?.randomMovies()
         view?.prepareTrendingUIView()
         view?.preparePreviewUIView()
         view?.prepareNavBarView()
