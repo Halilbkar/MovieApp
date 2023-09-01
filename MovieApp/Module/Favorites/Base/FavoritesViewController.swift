@@ -10,6 +10,7 @@ import UIKit
 protocol FavoritesViewProtocol: AnyObject {
     func setViewBackgroundColor(color: String)
     func prepareFavMoviesUIView()
+    func dataRefreshed()
 }
 
 final class FavoritesViewController: UIViewController {
@@ -17,6 +18,7 @@ final class FavoritesViewController: UIViewController {
     private lazy var favMoviesUIView: FavoritesMoviesUIView = {
         let view = FavoritesMoviesUIView()
         
+        view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -28,6 +30,12 @@ final class FavoritesViewController: UIViewController {
         super.viewDidLoad()
         
         presenter.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter.viewWillAppear()
     }
     
     override func viewWillLayoutSubviews() {
@@ -50,5 +58,23 @@ extension FavoritesViewController: FavoritesViewProtocol {
     
     func prepareFavMoviesUIView() {
         view.addSubview(favMoviesUIView)
+    }
+    
+    func dataRefreshed() {
+        favMoviesUIView.dataRefreshed()
+    }
+}
+
+extension FavoritesViewController: FavoritesMoviesUIViewProtocol {
+    func showFavorites() -> [FavoritesMoviesModel]? {
+        presenter.showFavorites()
+    }
+    
+    func deleteFavMovie(indexPath: IndexPath) {
+        presenter.deleteFavMovie(indexPath: indexPath)
+    }
+    
+    func deleteAll() {
+        presenter.deleteAll()
     }
 }

@@ -12,13 +12,15 @@ protocol MoviesPresenterInputs {
     func showMovies() -> [Results]?
     func showMoviesTitle() -> [MoviesTitle]?
     func getData(isSelect: MoviesTitle?)
+    func addFav(model: Results?)
+    func isFav(model: Results?) -> Bool?
 }
 
 final class MoviesPresenter {
     private weak var view: MoviesViewProtocol?
     private let interactor: MoviesInteractorInputs?
     private let router: MoviesRouterProtocol?
-    
+        
     init(view: MoviesViewProtocol, interactor: MoviesInteractorInputs?, router: MoviesRouterProtocol) {
         self.view = view
         self.interactor = interactor
@@ -57,6 +59,14 @@ extension MoviesPresenter: MoviesPresenterInputs {
             interactor?.getUpComingData()
         default: break
         }
+    }
+    
+    func isFav(model: Results?) -> Bool? {
+        interactor?.isFav(model: model)
+    }
+    
+    func addFav(model: Results?) {
+        interactor?.addFav(model: model)
     }
 }
 

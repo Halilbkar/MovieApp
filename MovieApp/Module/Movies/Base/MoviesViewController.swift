@@ -78,6 +78,14 @@ extension MoviesViewController: MoviesViewProtocol {
 }
 
 extension MoviesViewController: MoviesUIViewProtocol {
+    func addFavorites(model: Results?) {
+        presenter.addFav(model: model)
+    }
+    
+    func isFav(model: Results?) -> Bool? {
+        presenter.isFav(model: model)
+    }
+    
     func showMovies() -> [Results]? {
         presenter.showMovies()
     }

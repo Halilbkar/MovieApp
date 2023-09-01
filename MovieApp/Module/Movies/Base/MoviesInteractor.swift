@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol MoviesInteractorInputs {
     func getTrendingData()
@@ -15,6 +16,8 @@ protocol MoviesInteractorInputs {
     func getDiscoverData()
     func showMovies() -> [Results]
     func showMoviesTitle() -> [MoviesTitle]
+    func isFav(model: Results?) -> Bool
+    func addFav(model: Results?)
 }
 
 protocol MoviesInteractorOutputs: AnyObject {
@@ -24,6 +27,14 @@ protocol MoviesInteractorOutputs: AnyObject {
 final class MoviesInteractor {
     var presenter: MoviesInteractorOutputs?
     var service: MoviesServiceProtocol?
+    var storageManager: RealmManagerProtocol?
+    var userInfoManager: UserInfoManagerProtocol?
+        
+    init(service: MoviesServiceProtocol, storageManager: RealmManagerProtocol, userInfoManager: UserInfoManagerProtocol) {
+        self.service = service
+        self.storageManager = storageManager
+        self.userInfoManager = userInfoManager
+    }
             
     private var movies: [Results] = [] {
         didSet {
@@ -32,10 +43,6 @@ final class MoviesInteractor {
     }
     
     private var moviesTitle = MoviesTitle.allCases
-    
-    init(service: MoviesServiceProtocol) {
-        self.service = service
-    }
 }
 
 extension MoviesInteractor: MoviesInteractorInputs {
@@ -135,5 +142,42 @@ extension MoviesInteractor: MoviesInteractorInputs {
     
     func showMoviesTitle() -> [MoviesTitle] {
         return self.moviesTitle
+    }
+    
+    func isFav(model: Results?) -> Bool {
+        let favs = storageManager?.getAll(FavoritesMoviesModel.self).filter ({ $0.userId == userInfoManager?.getUserUid() })
+        
+        return favs?.filter({ $0.movieTitle == model?.original_title }).isEmpty == true ? false : true
+    }
+    
+    func addFav(model: Results?) {
+        guard let model else { return }
+        
+        if !isFav(model: model) {
+            
+            let favModel = FavoritesMoviesModel(userId: userInfoManager?.getUserUid(),
+                                                movieId: model.id,
+                                                movieImage: model.poster_path,
+                                                movieTitle: model.original_title,
+                                                release_date: model.release_date,
+                                                vote_average: model.vote_average)
+            
+            storageManager?.create(favModel, onError: { [weak self] error in
+                guard let self else { return }
+                print(error.localizedDescription)
+            })
+            
+        } else {
+            let favs = storageManager?.getAll(FavoritesMoviesModel.self).filter ({ $0.userId == userInfoManager?.getUserUid() })
+            
+            if let index = favs?.firstIndex(where: { $0.movieId == model.id }) {
+                if let item = favs?[index] {
+                    storageManager?.delete(item, onError: { [weak self] error in
+                        guard let self else { return }
+                        print(error.localizedDescription)
+                    })
+                }
+            }
+        }
     }
 }

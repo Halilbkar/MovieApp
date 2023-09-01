@@ -30,7 +30,7 @@ class ProfileItemTableViewCell: UITableViewCell {
     }()
     
     private lazy var hStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, symbolImageView])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel,symbolImageView])
         
         stackView.axis = .horizontal
         stackView.alignment = .center

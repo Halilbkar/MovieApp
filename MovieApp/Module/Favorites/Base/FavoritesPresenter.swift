@@ -9,6 +9,10 @@ import Foundation
 
 protocol FavoritesPresenterInputs {
     func viewDidLoad()
+    func viewWillAppear()
+    func showFavorites() -> [FavoritesMoviesModel]?
+    func deleteFavMovie(indexPath: IndexPath)
+    func deleteAll()
 }
 
 final class FavoritesPresenter {
@@ -27,9 +31,29 @@ extension FavoritesPresenter: FavoritesPresenterInputs {
     func viewDidLoad() {
         view?.prepareFavMoviesUIView()
         view?.setViewBackgroundColor(color: "background")
+        interactor?.getFavorites()
+    }
+    
+    func viewWillAppear() {
+        interactor?.getFavorites()
+        view?.dataRefreshed()
+    }
+    
+    func showFavorites() -> [FavoritesMoviesModel]? {
+        interactor?.showFavorites()
+    }
+    
+    func deleteFavMovie(indexPath: IndexPath) {
+        interactor?.deleteFavMovie(indexPath: indexPath)
+    }
+    
+    func deleteAll() {
+        interactor?.deleteAll()
     }
 }
 
 extension FavoritesPresenter: FavoritesInteractorOutputs {
-    
+    func dataRefreshed() {
+        view?.dataRefreshed()
+    }
 }
