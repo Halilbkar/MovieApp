@@ -19,6 +19,7 @@ final class MoviesViewController: UIViewController {
     private lazy var searchUIView: SearchUIView = {
         let view = SearchUIView()
         
+        view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -49,7 +50,7 @@ final class MoviesViewController: UIViewController {
             searchUIView.topAnchor.constraint(equalTo: view.topAnchor),
             searchUIView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             searchUIView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            searchUIView.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 160)),
+            searchUIView.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 150)),
             
             moviesUIView.topAnchor.constraint(equalTo: searchUIView.bottomAnchor),
             moviesUIView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -96,5 +97,11 @@ extension MoviesViewController: MoviesUIViewProtocol {
     
     func selectTitle(_ isSelect: MoviesTitle?) {
         presenter.getData(isSelect: isSelect)
+    }
+}
+
+extension MoviesViewController: SearchUIViewProtocol {
+    func searchDidChange(text: String) {
+        presenter.searchTextDidChange(text: text)
     }
 }

@@ -27,5 +27,5 @@ enum MoviesTitle: CaseIterable {
         case .trending:
             return "Trending"
         }
-    }    
+    }
 }

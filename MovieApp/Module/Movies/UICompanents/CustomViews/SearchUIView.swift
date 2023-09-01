@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SearchUIViewProtocol: AnyObject {
+    func searchDidChange(text: String)
+}
+
 class SearchUIView: UIView {
     
     private lazy var label: UILabel = {
@@ -29,8 +33,12 @@ class SearchUIView: UIView {
         searchBar.clipsToBounds = true
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         
+        searchBar.delegate = self
+        
         return searchBar
     }()
+    
+    weak var delegate: SearchUIViewProtocol?
     
     override init(frame: CGRect) {
         super .init(frame: frame)
@@ -51,10 +59,10 @@ class SearchUIView: UIView {
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 24)),
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -24)),
             
-            searchBar.topAnchor.constraint(equalTo: label.bottomAnchor, constant: CGFloat.dHeight(padding: 28)),
+            searchBar.topAnchor.constraint(equalTo: label.bottomAnchor, constant: CGFloat.dHeight(padding: 24)),
             searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 36)),
             searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -24)),
-            searchBar.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 30)),
+            searchBar.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 36)),
             
         ])
     }
@@ -64,3 +72,8 @@ class SearchUIView: UIView {
     }
 }
 
+extension SearchUIView: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.delegate?.searchDidChange(text: searchText)
+    }
+}

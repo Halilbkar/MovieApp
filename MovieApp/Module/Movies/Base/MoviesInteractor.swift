@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 protocol MoviesInteractorInputs {
     func getTrendingData()
@@ -18,6 +17,7 @@ protocol MoviesInteractorInputs {
     func showMoviesTitle() -> [MoviesTitle]
     func isFav(model: Results?) -> Bool
     func addFav(model: Results?)
+    func searchTextDidChange(text: String)
 }
 
 protocol MoviesInteractorOutputs: AnyObject {
@@ -41,7 +41,7 @@ final class MoviesInteractor {
             presenter?.dataRefreshed()
         }
     }
-    
+        
     private var moviesTitle = MoviesTitle.allCases
 }
 
@@ -162,8 +162,7 @@ extension MoviesInteractor: MoviesInteractorInputs {
                                                 release_date: model.release_date,
                                                 vote_average: model.vote_average)
             
-            storageManager?.create(favModel, onError: { [weak self] error in
-                guard let self else { return }
+            storageManager?.create(favModel, onError: { error in
                 print(error.localizedDescription)
             })
             
@@ -172,12 +171,22 @@ extension MoviesInteractor: MoviesInteractorInputs {
             
             if let index = favs?.firstIndex(where: { $0.movieId == model.id }) {
                 if let item = favs?[index] {
-                    storageManager?.delete(item, onError: { [weak self] error in
-                        guard let self else { return }
+                    storageManager?.delete(item, onError: { error in
                         print(error.localizedDescription)
                     })
                 }
             }
+        }
+    }
+    
+    func searchTextDidChange(text: String) {
+        if text.isEmpty {
+            self.movies = []
+            self.getTrendingData()
+        } else {
+            self.movies = movies.filter({ movies in
+                movies.original_title.lowercased().contains(text.lowercased())
+            })
         }
     }
 }

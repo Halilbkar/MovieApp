@@ -14,6 +14,7 @@ protocol MoviesPresenterInputs {
     func getData(isSelect: MoviesTitle?)
     func addFav(model: Results?)
     func isFav(model: Results?) -> Bool?
+    func searchTextDidChange(text: String)
 }
 
 final class MoviesPresenter {
@@ -67,6 +68,10 @@ extension MoviesPresenter: MoviesPresenterInputs {
     
     func addFav(model: Results?) {
         interactor?.addFav(model: model)
+    }
+    
+    func searchTextDidChange(text: String) {
+        interactor?.searchTextDidChange(text: text)
     }
 }
 
