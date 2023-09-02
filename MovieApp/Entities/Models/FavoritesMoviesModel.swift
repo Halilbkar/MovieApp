@@ -26,3 +26,14 @@ class FavoritesMoviesModel: Object {
         self.vote_average = vote_average
     }
 }
+
+class SelectedImageModelRealm: Object {
+    @Persisted var userId: String?
+    @Persisted var imageData: Data?
+    
+    convenience init(userId: String?, imageData: Data?) {
+        self.init()
+        self.userId = userId
+        self.imageData = imageData
+    }
+}

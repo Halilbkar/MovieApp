@@ -91,8 +91,10 @@ class CustomNavBarUIView: UIView {
     }
     
     func showModel(model: CurrentUserModel) {
+        let imageLogo = "https://img.freepik.com/free-vector/branding-identity-corporate-vector-logo-m-design_460848-10168.jpg?w=996&t=st=1693574825~exp=1693575425~hmac=d0503a2fb61f88700c909b2f9ef4c99bc0d36916a9e736fca837746f60a66799"
+        
         welcomeLabel.text = "Welcome,"
-        profilePhotoImageView.sd_setImage(with: URL(string: model.profileImageURLString ?? "https://picsum.photos/seed/picsum/500/500"))
+        profilePhotoImageView.sd_setImage(with: URL(string: model.profileImageURLString ?? imageLogo))
         userNameLabel.text = model.name ?? "MovieApp"
     }
 }

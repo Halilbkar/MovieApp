@@ -142,7 +142,7 @@ extension MoviesUIView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
-        var selectMovie = delegate?.showMovies()?[indexPath.row]
+        let selectMovie = delegate?.showMovies()?[indexPath.row]
         var actionTitle = ""
         
         if !(delegate?.isFav(model: selectMovie))! {

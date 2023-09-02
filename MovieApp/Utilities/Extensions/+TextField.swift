@@ -18,19 +18,34 @@ extension UITextField {
     }
     
     func addBottomLine(color: UIColor, height: CGFloat) {
-           self.borderStyle = .none
-           self.layer.backgroundColor = UIColor.white.cgColor
-           self.layer.masksToBounds = false
-           self.layer.shadowColor = color.cgColor
-           self.layer.shadowOffset = CGSize(width: 0.0, height: height)
-           self.layer.shadowOpacity = 1.0
-           self.layer.shadowRadius = 0.0
-       }
+        self.borderStyle = .none
+        self.layer.backgroundColor = UIColor.white.cgColor
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOffset = CGSize(width: 0.0, height: height)
+        self.layer.shadowOpacity = 1.0
+        self.layer.shadowRadius = 0.0
+    }
     
     func addLogo(image: String) {
         let logoImageView = UIImageView(image: UIImage(systemName: image))
         
         self.leftView = logoImageView
         self.leftViewMode = .always
+    }
+    
+    func addRightButton(withTitle title: String, target: Any?, action: Selector) {
+        // Buton oluştur
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(systemName: title), for: .normal)
+        button.addTarget(target, action: action, for: .touchUpInside)
+        
+        // Butonun boyutunu ayarla
+        let buttonSize = CGSize(width: 80, height: self.frame.size.height)
+        button.frame = CGRect(origin: .zero, size: buttonSize)
+        
+        // Butonu sağ tarafta göster
+        self.rightView = button
+        self.rightViewMode = .always
     }
 }

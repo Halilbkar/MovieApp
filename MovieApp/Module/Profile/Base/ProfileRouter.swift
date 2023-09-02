@@ -10,6 +10,7 @@ import UIKit.UIViewController
 
 protocol ProfileRouterProtocol {
     func toLogin()
+    func toImagePicker(imagePicker: UIImagePickerController)
 }
 
 class ProfileRouter {
@@ -23,7 +24,7 @@ class ProfileRouter {
     static func startExecution() -> UIViewController {
         let view = ProfileViewController()
         let router = ProfileRouter(view: view)
-        let interactor = ProfileInteractor(userInfoManager: UserInfoManager(), authManager: AuthManager())
+        let interactor = ProfileInteractor(userInfoManager: UserInfoManager(), authManager: AuthManager(), storageManager: RealmManager())
         let presenter = ProfilePresenter(view: view, interactor: interactor, router: router)
         
         view.presenter = presenter
@@ -37,6 +38,10 @@ extension ProfileRouter: ProfileRouterProtocol {
     func toLogin() {
         let loginModule = LoginRouter.startExecution()
         view?.navigationController?.pushViewController(loginModule, animated: true)
+    }
+    
+    func toImagePicker(imagePicker: UIImagePickerController) {
+        view?.present(imagePicker, animated: true)
     }
 }
 

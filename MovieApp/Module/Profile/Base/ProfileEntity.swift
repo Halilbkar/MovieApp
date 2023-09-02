@@ -6,41 +6,6 @@
 //
 
 import Foundation
-import UIKit.UIImage
+import RealmSwift
 
-enum ProfileRowItem {
-    case name
-    case email
-    case phoneNumber
-    
-    var title: String {
-        switch self {
-        case .name:
-            return "Your name"
-        case .email:
-            return "Your email"
-        case .phoneNumber:
-            return "Your Phone Number"
-        }
-    }
-    
-    var image: UIImage? {
-        switch self {
-        case .name:
-            return UIImage(systemName: "map")
-        case .email:
-            return UIImage(systemName: "creditcard")
-        case .phoneNumber:
-            return UIImage(systemName: "wallet.pass")
-        }
-    }
-}
 
-struct ProfileRowItemModel {
-    let item: ProfileRowItem
-}
-
-struct CurrentUserModel: Equatable {
-    let profileImageURLString: String?
-    let name: String?
-}

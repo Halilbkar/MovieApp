@@ -71,9 +71,11 @@ class LoginUIView: UIView {
         
         textField.translatesAutoresizingMaskIntoConstraints = false
         
+        textField.isSecureTextEntry = true
         textField.setPlaceholder(text: "Type your password", fontSize: 10, color: .systemGray4)
         textField.addBottomLine(color: .systemGray4, height: 1)
         textField.addLogo(image: "key.horizontal.fill")
+        textField.addRightButton(withTitle: buttonImageTitle, target: self, action: #selector(securityPassTapped))
         
         
         return textField
@@ -154,7 +156,7 @@ class LoginUIView: UIView {
     }()
     
     weak var delegate: LoginUIViewProtocol?
-    
+        
     override init(frame: CGRect) {
         super .init(frame: frame)
         
@@ -201,6 +203,11 @@ extension LoginUIView {
     
     @objc func googleButtonTapped() {
         delegate?.googleButtonTapped()
+    }
+    
+    @objc func securityPassTapped() {
+        passwordTextField.isSecureTextEntry.toggle()
+        buttonImageTitle = passwordTextField.isSecureTextEntry ? "eye.slash" : "eye"
     }
 }
 

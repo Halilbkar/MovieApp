@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import UIKit.UIImagePickerController
 
 protocol ProfilePresenterProtocol {
     func viewDidLoad()
     func showItems() -> [ProfileRowItemModel]?
     func signOutTapped()
+    func toImagePicker(imagePicker: UIImagePickerController)
+    func selectedImage(imageData: Data)
 }
 
 class ProfilePresenter {
@@ -31,6 +34,7 @@ extension ProfilePresenter: ProfilePresenterProtocol {
         view?.prepareUserInfoView()
         view?.prepareProfileItemView()
         interactor?.getuserInfo()
+        interactor?.getProfileImage()
     }
     
     func showItems() -> [ProfileRowItemModel]? {
@@ -39,6 +43,14 @@ extension ProfilePresenter: ProfilePresenterProtocol {
     
     func signOutTapped() {
         interactor?.signOut()
+    }
+    
+    func toImagePicker(imagePicker: UIImagePickerController) {
+        router?.toImagePicker(imagePicker: imagePicker)
+    }
+    
+    func selectedImage(imageData: Data) {
+        interactor?.selectedImage(imageData: imageData)
     }
 }
 
@@ -49,6 +61,10 @@ extension ProfilePresenter: ProfileInteractorOutputs {
     
     func signOutCompleted() {
         router?.toLogin()
+    }
+    
+    func showImageItems(model: [SelectedImageModelRealm]) {
+        view?.showImageItems(model: model)
     }
 }
 

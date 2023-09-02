@@ -7,7 +7,6 @@
 
 import UIKit
 import FirebaseCore
-import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,29 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        
-//        let config = Realm.Configuration(
-//            schemaVersion: 2, // Yeni şema sürümü
-//            migrationBlock: { migration, oldSchemaVersion in
-//                if oldSchemaVersion < 2 {
-//                    // Yapılan değişiklikleri burada tanımlayın
-//                    // Örneğin, yeni alanların eklenmesi
-//                    migration.enumerateObjects(ofType: FavoritesMoviesModel.className()) { oldObject, newObject in
-//                        newObject?["release_date"] = "" // Varsayılan değer atayabilirsiniz
-//                        newObject?["vote_average"] = 0.0 // Varsayılan değer atayabilirsiniz
-//                    }
-//                }
-//            }
-//        )
-//        Realm.Configuration.defaultConfiguration = config
-        
-//        let config = Realm.Configuration(
-//            schemaVersion: 2, // Yeni şema sürümünü burada belirtin
-//            migrationBlock: { migration, oldSchemaVersion in
-//                // Geçiş işlemi kodunu tanımlayın (gerekirse)
-//            }
-//        )
-//        Realm.Configuration.defaultConfiguration = config
         
         return true
     }
