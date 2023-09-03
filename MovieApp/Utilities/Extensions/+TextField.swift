@@ -28,7 +28,7 @@ extension UITextField {
     }
     
     func addLogo(image: String) {
-        let logoImageView = UIImageView(image: UIImage(systemName: image))
+        let logoImageView = UIImageView(image: UIImage(systemName: image)?.withTintColor(.label, renderingMode: .alwaysOriginal))
         
         self.leftView = logoImageView
         self.leftViewMode = .always
@@ -38,6 +38,7 @@ extension UITextField {
         // Buton oluştur
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: title), for: .normal)
+        button.tintColor = .label
         button.addTarget(target, action: action, for: .touchUpInside)
         
         // Butonun boyutunu ayarla

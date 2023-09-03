@@ -10,8 +10,7 @@ import Foundation
 protocol FavoritesPresenterInputs {
     func viewDidLoad()
     func viewWillAppear()
-    func showFavorites() -> [FavoritesMoviesModel]?
-    func deleteFavMovie(indexPath: IndexPath)
+    func deleteFavMovie(movie: FavoritesMoviesModel)
     func deleteAll()
 }
 
@@ -36,15 +35,10 @@ extension FavoritesPresenter: FavoritesPresenterInputs {
     
     func viewWillAppear() {
         interactor?.getFavorites()
-        view?.dataRefreshed()
     }
     
-    func showFavorites() -> [FavoritesMoviesModel]? {
-        interactor?.showFavorites()
-    }
-    
-    func deleteFavMovie(indexPath: IndexPath) {
-        interactor?.deleteFavMovie(indexPath: indexPath)
+    func deleteFavMovie(movie: FavoritesMoviesModel) {
+        interactor?.deleteFavMovie(movie: movie)
     }
     
     func deleteAll() {
@@ -53,7 +47,7 @@ extension FavoritesPresenter: FavoritesPresenterInputs {
 }
 
 extension FavoritesPresenter: FavoritesInteractorOutputs {
-    func dataRefreshed() {
-        view?.dataRefreshed()
+    func favMoviesData(model: [FavoritesMoviesModel]) {
+        view?.favMoviesData(model: model)
     }
 }

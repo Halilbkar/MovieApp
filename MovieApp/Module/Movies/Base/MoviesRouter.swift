@@ -23,7 +23,7 @@ class MoviesRouter {
     static func startExecution() -> UIViewController {
         let view = MoviesViewController()
         let router = MoviesRouter(view: view)
-        let interactor = MoviesInteractor(service: MoviesService(), storageManager: RealmManager(), userInfoManager: UserInfoManager())
+        let interactor = MoviesInteractor()
         let presenter = MoviesPresenter(view: view, interactor: interactor, router: router)
         
         view.presenter = presenter

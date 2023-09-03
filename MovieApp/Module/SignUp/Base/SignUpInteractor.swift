@@ -18,16 +18,11 @@ protocol SignUpInteractorOutputs: AnyObject {
 
 final class SignUpInteractor {
     weak var presenter: SignUpInteractorOutputs?
-    private let authManager: AuthManagerProtocol?
-    
-    init(authManager: AuthManagerProtocol?) {
-        self.authManager = authManager
-    }
 }
 
 extension SignUpInteractor: SignUpInteractorInputs {
     func signUpTapped(username: String, password: String) {
-        authManager?.signUp(email: username, password: password, completion: { [weak self] results in
+        AuthManager.shared.signUp(email: username, password: password, completion: { [weak self] results in
             guard let self else { return }
             
             switch results {

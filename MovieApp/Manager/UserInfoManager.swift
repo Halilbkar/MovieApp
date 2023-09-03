@@ -14,6 +14,10 @@ protocol UserInfoManagerProtocol {
 }
 
 final class UserInfoManager: UserInfoManagerProtocol {
+    
+    static let shared = UserInfoManager()
+    private init() {}
+
     func getUserProfilePictureAndEmail(completion: @escaping (_ photo: String?, _ name: String?) -> Void) {
         if let currentUser = Auth.auth().currentUser {
             let profileImageURL = currentUser.photoURL

@@ -23,6 +23,7 @@ class FavoritesTableViewCell: UITableViewCell {
         
         label.text = "Item"
         label.textColor = .white
+        label.numberOfLines = 0
         label.font = .boldSystemFont(ofSize: CGFloat.dWidth(padding: 14))
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -57,6 +58,7 @@ class FavoritesTableViewCell: UITableViewCell {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = UIColor(named: "background")
+        self.selectionStyle = .none
         
         addSubview(moviesImageView)
         addSubview(titleLabel)
@@ -76,6 +78,7 @@ class FavoritesTableViewCell: UITableViewCell {
             
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat.dHeight(padding: 20)),
             titleLabel.leadingAnchor.constraint(equalTo: moviesImageView.trailingAnchor, constant: CGFloat.dWidth(padding: 20)),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -20)),
             
             dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: CGFloat.dHeight(padding: 20)),
             dateLabel.leadingAnchor.constraint(equalTo: moviesImageView.trailingAnchor, constant: CGFloat.dWidth(padding: 20)),

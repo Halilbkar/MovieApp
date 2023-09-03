@@ -19,7 +19,7 @@ class UserInfoUIView: UIView {
         let view = UIView()
         
         view.backgroundColor = UIColor(named: "background")
-        view.layer.cornerRadius = 50
+        view.layer.cornerRadius = CGFloat.dWidth(padding: 50)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -40,7 +40,7 @@ class UserInfoUIView: UIView {
         let imageView = UIImageView()
         
         imageView.backgroundColor = .blue
-        imageView.layer.cornerRadius = 60
+        imageView.layer.cornerRadius = CGFloat.dWidth(padding: 60)
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.borderColor = UIColor.white.cgColor
@@ -107,34 +107,16 @@ class UserInfoUIView: UIView {
     }
 }
 
-// MARK: - ImagePicker Protocols
-
-extension UserInfoUIView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imageView.image = pickedImage
-            
-            if let imageData = pickedImage.toData() {
-                self.delegate?.selectedImage(imageData: imageData)
-            }
-        }
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true)
-    }
-}
-
 // MARK: - ImagePicker Action
 
 extension UserInfoUIView {
     @objc private func imageViewTapped() {
-        if model?.profileImageURLString == nil {
-            delegate?.toImagePicker(imagePicker: imagePicker)
-            print("AKTİF")
-        } else {
-            return
+        DispatchQueue.main.async {
+            if self.model?.profileImageURLString == nil {
+                self.delegate?.toImagePicker(imagePicker: self.imagePicker)
+            } else {
+                return
+            }
         }
     }
 }
@@ -152,7 +134,6 @@ extension UserInfoUIView {
     func showProfileImage(model: [SelectedImageModelRealm]?) {
         if self.model?.profileImageURLString == nil {
             guard let model else { return }
-            print("ÇALIŞTIIII")
             if let modelItem = model.first {
                 if let getImage = modelItem.imageData {
                     imageView.image = UIImage(data: getImage)
@@ -161,6 +142,25 @@ extension UserInfoUIView {
                 }
             }
         }
+    }
+}
+
+// MARK: - ImagePicker Protocols
+
+extension UserInfoUIView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageView.image = pickedImage
+            
+            if let imageData = pickedImage.toData() {
+                self.delegate?.selectedImage(imageData: imageData)
+            }
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
     }
 }
 

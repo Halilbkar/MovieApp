@@ -9,7 +9,7 @@ import Foundation
 
 final class NetworkManager {
    
-    func request<T: Codable>(endpoint: EndpointProtocol? = nil, urlRequest: URLRequest? = nil) async throws -> T {
+    static func request<T: Codable>(endpoint: EndpointProtocol? = nil, urlRequest: URLRequest? = nil) async throws -> T {
         let finalURLRequest: URLRequest
         
         if let endpoint {

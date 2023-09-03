@@ -12,7 +12,7 @@ class MoviesCollectionViewCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.backgroundColor = .blue
+        imageView.backgroundColor = .clear
         imageView.layer.cornerRadius = 20
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
@@ -26,7 +26,7 @@ class MoviesCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super .init(frame: frame)
-        
+            
         addSubview(imageView)
     }
     

@@ -10,24 +10,13 @@ import UIKit
 protocol HomeViewProtocol: AnyObject {
     func setViewBackgroundColor(color: String)
     func prepareNavBarView()
-    func preparePreviewUIView()
     func prepareTrendingUIView()
-    func dataRefreshed()
-    func showMoviesImage()
+    func dataAndRefreshed(model: [Results])
     func showProfileImageAndEmail(model: CurrentUserModel)
     func showImageItems(model: [SelectedImageModelRealm]?)
 }
 
 final class HomeViewController: UIViewController {
-    
-    private lazy var previewUIView: PreviewUIView = {
-        let view = PreviewUIView()
-        
-        view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
     
     private lazy var trendingUIView: TrendingUIView = {
         let view = TrendingUIView()
@@ -60,6 +49,10 @@ final class HomeViewController: UIViewController {
         presenter.viewWillAppear()
     }
     
+    deinit {
+        print("DEİNİT \(self.classForCoder)")
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
@@ -70,15 +63,10 @@ final class HomeViewController: UIViewController {
             customNavBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             customNavBarView.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 90)),
             
-            previewUIView.topAnchor.constraint(equalTo: customNavBarView.bottomAnchor),
-            previewUIView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            previewUIView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            previewUIView.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 300)),
-            
-            trendingUIView.topAnchor.constraint(equalTo: previewUIView.bottomAnchor),
+            trendingUIView.topAnchor.constraint(equalTo: customNavBarView.bottomAnchor),
             trendingUIView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             trendingUIView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            trendingUIView.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 350)),
+            trendingUIView.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 650)),
         ])
     }
 }
@@ -93,20 +81,12 @@ extension HomeViewController: HomeViewProtocol {
         view.addSubview(customNavBarView)
     }
     
-    func preparePreviewUIView() {
-        view.addSubview(previewUIView)
-    }
-    
     func prepareTrendingUIView() {
         view.addSubview(trendingUIView)
     }
     
-    func dataRefreshed() {
-        trendingUIView.reloadData()
-    }
-    
-    func showMoviesImage() {
-        previewUIView.showMoviesImage()
+    func dataAndRefreshed(model: [Results]) {
+        trendingUIView.dataAndRefreshed(model: model)
     }
     
     func showProfileImageAndEmail(model: CurrentUserModel) {
@@ -121,15 +101,5 @@ extension HomeViewController: HomeViewProtocol {
 // MARK: - TrendingUIView Protocol
 
 extension HomeViewController: TrendingUIViewProtocol {
-    func showMovies() -> [Results]? {
-        presenter.showMovies()
-    }
-}
-
-// MARK: - PreviewUIView Protocol
-
-extension HomeViewController: PreviewUIViewProtocol {
-    func showMoviesImage() -> Results? {
-        presenter.showMoviesImage()
-    }
+    
 }

@@ -22,16 +22,11 @@ protocol LoginInteractorOutputs: AnyObject {
 
 final class LoginInteractor {
     weak var presenter: LoginInteractorOutputs?
-    private let authManager: AuthManagerProtocol?
-    
-    init(authManager: AuthManagerProtocol) {
-        self.authManager = authManager
-    }
 }
 
 extension LoginInteractor: LoginInteractorInputs {
     func login(username: String, password: String) {
-        authManager?.login(email: username, password: password, completion: { [weak self] results in
+        AuthManager.shared.login(email: username, password: password, completion: { [weak self] results in
             guard let self else { return }
             
             switch results {
@@ -45,7 +40,7 @@ extension LoginInteractor: LoginInteractorInputs {
     }
     
     func forgotPassword(username: String) {
-        authManager?.resetPassword(with: username, completion: { [weak self] results in
+        AuthManager.shared.resetPassword(with: username, completion: { [weak self] results in
             guard let self else { return }
             
             switch results {
@@ -58,7 +53,7 @@ extension LoginInteractor: LoginInteractorInputs {
     }
     
     func googleSingIn() {
-        authManager?.signInWithGoogle(completion: { [weak self] results in
+        AuthManager.shared.signInWithGoogle(completion: { [weak self] results in
             guard let self else { return }
             
             switch results {

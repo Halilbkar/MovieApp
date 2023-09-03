@@ -23,7 +23,7 @@ class LoginRouter {
     static func startExecution() -> UIViewController {
         let view = LoginViewController()
         let router = LoginRouter(view: view)
-        let intercator = LoginInteractor(authManager: AuthManager())
+        let intercator = LoginInteractor()
         let presenter = LoginPresenter(view: view, interactor: intercator, router: router)
         
         view.presenter = presenter
@@ -41,6 +41,6 @@ extension LoginRouter: LoginRouterProtocol {
     
     func toHome() {
         let tabBarModule = TabBarRouter.startExecution()
-        view?.navigationController?.pushViewController(tabBarModule, animated: true)
+        RootWindowManager.shared.changeRootViewController(tabBarModule, animated: true)
     }
 }

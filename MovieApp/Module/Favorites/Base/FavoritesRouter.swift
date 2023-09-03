@@ -23,7 +23,7 @@ final class FavoritesRouter {
     static func startExecution() -> UIViewController {
         let view = FavoritesViewController()
         let router = FavoritesRouter(view: view)
-        let interactor = FavoritesInteractor(storageManager: RealmManager(), userInfoManager: UserInfoManager())
+        let interactor = FavoritesInteractor()
         let presenter = FavoritesPresenter(view: view, interactor: interactor, router: router)
         
         view.presenter = presenter

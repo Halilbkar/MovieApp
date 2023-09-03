@@ -32,6 +32,10 @@ class SignUpViewController: UIViewController {
         presenter.viewDidLoad()
     }
     
+    deinit {
+        print("DEİNİT \(self.classForCoder)")
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         

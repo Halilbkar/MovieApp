@@ -12,7 +12,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -23,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController = TabBarRouter.startExecution()
         } else {
             /// We can make the onboarding page visible only once, but it is not important for this project.
-            window?.rootViewController = UINavigationController(rootViewController: TabBarRouter.startExecution())
+            window?.rootViewController = UINavigationController(rootViewController: LoginRouter.startExecution())
         }
         
         window?.makeKeyAndVisible()

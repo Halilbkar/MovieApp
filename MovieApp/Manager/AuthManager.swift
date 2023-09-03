@@ -19,6 +19,9 @@ protocol AuthManagerProtocol {
 }
 
 final class AuthManager {
+    static let shared = AuthManager()
+    private init() {}
+    
     private let auth = Auth.auth()
 }
 

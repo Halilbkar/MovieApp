@@ -10,7 +10,7 @@ import UIKit
 protocol MoviesViewProtocol: AnyObject {
     func setViewBackgroundColor(color: String)
     func prepareMoviesUIView()
-    func dataRefreshed(movies: [Results])
+    func dataAndRefreshed(model: [Results])
 }
 
 final class MoviesViewController: UIViewController {
@@ -30,6 +30,10 @@ final class MoviesViewController: UIViewController {
         super.viewDidLoad()
         
         presenter.viewDidLoad()
+    }
+    
+    deinit {
+        print("DEİNİT \(self.classForCoder)")
     }
     
     override func viewWillLayoutSubviews() {
@@ -53,8 +57,8 @@ extension MoviesViewController: MoviesViewProtocol {
         view.addSubview(moviesUIView)
     }
     
-    func dataRefreshed(movies: [Results]) {
-        moviesUIView.setMovies(movies: movies)
+    func dataAndRefreshed(model: [Results]) {
+        moviesUIView.dataAndRefreshed(model: model)
     }
 }
 

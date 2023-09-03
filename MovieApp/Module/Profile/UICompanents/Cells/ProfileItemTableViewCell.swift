@@ -64,8 +64,8 @@ class ProfileItemTableViewCell: UITableViewCell {
         fatalError()
     }
     
-    func showModel(model: ProfileRowItemModel?) {
-        symbolImageView.image = model?.item.image
-        titleLabel.text = model?.item.title
+    func showModel(model: ProfileRowItem) {
+        symbolImageView.image = model.image
+        titleLabel.text = model.title
     }
 }

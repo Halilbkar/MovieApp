@@ -17,7 +17,6 @@
 		EF1CCB832A9673E200EC4C03 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCB822A9673E200EC4C03 /* HomeRouter.swift */; };
 		EF1CCB862A9682CF00EC4C03 /* +CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCB852A9682CF00EC4C03 /* +CGFloat.swift */; };
 		EF1CCB882A9682E800EC4C03 /* +Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCB872A9682E800EC4C03 /* +Cells.swift */; };
-		EF1CCB902A96841E00EC4C03 /* PreviewUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCB8F2A96841E00EC4C03 /* PreviewUIView.swift */; };
 		EF1CCB922A9686FD00EC4C03 /* TrendingUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCB912A9686FD00EC4C03 /* TrendingUIView.swift */; };
 		EF1CCB952A96894B00EC4C03 /* TrendingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCB942A96894B00EC4C03 /* TrendingCollectionViewCell.swift */; };
 		EF1CCB972A968EFF00EC4C03 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCB962A968EFF00EC4C03 /* TabBarController.swift */; };
@@ -102,7 +101,6 @@
 		EF1CCB822A9673E200EC4C03 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		EF1CCB852A9682CF00EC4C03 /* +CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+CGFloat.swift"; sourceTree = "<group>"; };
 		EF1CCB872A9682E800EC4C03 /* +Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+Cells.swift"; sourceTree = "<group>"; };
-		EF1CCB8F2A96841E00EC4C03 /* PreviewUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewUIView.swift; sourceTree = "<group>"; };
 		EF1CCB912A9686FD00EC4C03 /* TrendingUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingUIView.swift; sourceTree = "<group>"; };
 		EF1CCB942A96894B00EC4C03 /* TrendingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCollectionViewCell.swift; sourceTree = "<group>"; };
 		EF1CCB962A968EFF00EC4C03 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -399,7 +397,6 @@
 		EF1CCBB42A969EF100EC4C03 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				EF1CCB8F2A96841E00EC4C03 /* PreviewUIView.swift */,
 				EF1CCB912A9686FD00EC4C03 /* TrendingUIView.swift */,
 				EF5A77B22AA0FD85009C2078 /* CustomNavBarUIView.swift */,
 			);
@@ -757,7 +754,6 @@
 				EF1CCB7B2A96739100EC4C03 /* HomeInteractor.swift in Sources */,
 				EFB1B5B72AA1E1D100606D9B /* RealmError.swift in Sources */,
 				EF5A77AF2AA0B3AC009C2078 /* ProfileItemTableViewCell.swift in Sources */,
-				EF1CCB902A96841E00EC4C03 /* PreviewUIView.swift in Sources */,
 				EF1CCBAE2A96909100EC4C03 /* ProfileInteractor.swift in Sources */,
 				EF1CCBC92A9814E700EC4C03 /* LoginRouter.swift in Sources */,
 				EFB1B5BF2AA2334400606D9B /* CurrentUserModel.swift in Sources */,

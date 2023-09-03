@@ -8,34 +8,30 @@
 import Foundation
 import UIKit.UIImage
 
-enum ProfileRowItem {
-    case name
-    case email
-    case phoneNumber
+enum ProfileRowItem: CaseIterable {
+    case contactUs
+    case privacyPolicy
+    case rateUs
     
     var title: String {
         switch self {
-        case .name:
-            return "Your name"
-        case .email:
-            return "Your email"
-        case .phoneNumber:
-            return "Your Phone Number"
+        case .contactUs:
+            return "Contact Us"
+        case .privacyPolicy:
+            return "Privacy Policy"
+        case .rateUs:
+            return "Rate Us"
         }
     }
     
     var image: UIImage? {
         switch self {
-        case .name:
-            return UIImage(systemName: "map")
-        case .email:
-            return UIImage(systemName: "creditcard")
-        case .phoneNumber:
+        case .contactUs:
+            return UIImage(systemName: "phone")
+        case .privacyPolicy:
             return UIImage(systemName: "wallet.pass")
+        case .rateUs:
+            return UIImage(systemName: "hand.point.up")
         }
     }
-}
-
-struct ProfileRowItemModel {
-    let item: ProfileRowItem
 }

@@ -87,7 +87,7 @@ class MoviesUIView: UIView {
         }
     }
     
-    private var movies: [Results] = []
+    private var model: [Results] = []
     private var filteredMovies: [Results] = []
     
     override init(frame: CGRect) {
@@ -135,9 +135,9 @@ class MoviesUIView: UIView {
         moviesCollectionView.reloadData()
     }
     
-    public func setMovies(movies: [Results]) {
-        self.movies = movies
-        self.filteredMovies = movies
+    public func dataAndRefreshed(model: [Results]) {
+        self.model = model
+        self.filteredMovies = model
         moviesCollectionView.reloadData()
     }
 }
@@ -150,7 +150,7 @@ extension MoviesUIView: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         if collectionView == moviesCollectionView {
-            return movies.count
+            return model.count
         }
         
         return Int()
@@ -170,7 +170,7 @@ extension MoviesUIView: UICollectionViewDelegate, UICollectionViewDataSource {
         if collectionView == moviesCollectionView {
             guard let titleCell = collectionView.dequeueReusableCell(withReuseIdentifier: MoviesCollectionViewCell.identifier, for: indexPath) as? MoviesCollectionViewCell else { return UICollectionViewCell() }
             
-            titleCell.showModel(model: movies[indexPath.row])
+            titleCell.showModel(model: model[indexPath.row])
             
             return titleCell
         }
@@ -187,7 +187,7 @@ extension MoviesUIView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
-        let selectMovie = movies[indexPath.row]
+        let selectMovie = model[indexPath.row]
         var actionTitle = ""
         
         if !(delegate?.isFav(model: selectMovie))! {
@@ -210,10 +210,10 @@ extension MoviesUIView: UICollectionViewDelegate, UICollectionViewDataSource {
 extension MoviesUIView: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            movies = filteredMovies
+            model = filteredMovies
         } else {
-            movies = filteredMovies
-            self.movies = movies.filter({ movies in
+            model = filteredMovies
+            self.model = model.filter({ movies in
                 movies.original_title.lowercased().contains(searchText.lowercased())
             })
         }

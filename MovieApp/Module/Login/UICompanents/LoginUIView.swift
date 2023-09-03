@@ -58,6 +58,7 @@ class LoginUIView: UIView {
         
         textField.translatesAutoresizingMaskIntoConstraints = false
         
+        textField.autocapitalizationType = .none
         textField.setPlaceholder(text: "Type your username", fontSize: 10, color: .systemGray4)
         textField.addBottomLine(color: .systemGray4, height: 1)
         textField.addLogo(image: "person.fill")
@@ -103,7 +104,7 @@ class LoginUIView: UIView {
         config.baseForegroundColor = .white
         config.baseBackgroundColor = .black
         config.title = "LOGIN"
-        config.attributedTitle?.font = .boldSystemFont(ofSize: 16)
+        config.attributedTitle?.font = .boldSystemFont(ofSize: CGFloat.dWidth(padding: 16))
         config.buttonSize = .medium
         
         let button = UIButton(configuration: config)
@@ -203,6 +204,10 @@ extension LoginUIView {
     
     @objc func googleButtonTapped() {
         delegate?.googleButtonTapped()
+        
+//        UIView.animate(withDuration: 3) {
+//            self.loginLabel.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+//        }
     }
     
     @objc func securityPassTapped() {

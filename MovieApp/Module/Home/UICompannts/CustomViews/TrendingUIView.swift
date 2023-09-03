@@ -8,12 +8,45 @@
 import UIKit
 
 protocol TrendingUIViewProtocol: AnyObject {
-    func showMovies() -> [Results]?
+    
 }
 
 class TrendingUIView: UIView {
     
-    private lazy var label: UILabel = {
+    private lazy var randomMoviesLabel: UILabel = {
+        let label = UILabel()
+        
+        label.text = "Editor's choice"
+        label.textColor = .white
+        label.font = .boldSystemFont(ofSize: CGFloat.dWidth(padding: 20))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private lazy var imageViewOne: UIImageView = {
+        let imageView = UIImageView()
+        
+        imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 12
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+    
+    private lazy var imageViewTwo: UIImageView = {
+        let imageView = UIImageView()
+        
+        imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 12
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+    
+    private lazy var trendingMovieslabel: UILabel = {
         let label = UILabel()
         
         label.text = "Trending"
@@ -44,11 +77,20 @@ class TrendingUIView: UIView {
     }()
     
     weak var delegate: TrendingUIViewProtocol?
+    
+    private var model: [Results] = [] {
+        didSet {
+            self.showRandomMovies()
+        }
+    }
 
     override init(frame: CGRect) {
         super .init(frame: frame)
                 
-        addSubview(label)
+        addSubview(randomMoviesLabel)
+        addSubview(imageViewOne)
+        addSubview(imageViewTwo)
+        addSubview(trendingMovieslabel)
         addSubview(trendingCollectionView)
     }
     
@@ -56,12 +98,26 @@ class TrendingUIView: UIView {
         super.layoutSubviews()
         
         NSLayoutConstraint.activate([
-        
-            label.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat.dHeight(padding: 5)),
-            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 24)),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -252)),
             
-            trendingCollectionView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: CGFloat.dHeight(padding: 4)),
+            randomMoviesLabel.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat.dHeight(padding: 24)),
+            randomMoviesLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 24)),
+            randomMoviesLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -137)),
+        
+            imageViewOne.topAnchor.constraint(equalTo: randomMoviesLabel.bottomAnchor, constant: CGFloat.dHeight(padding: 20)),
+            imageViewOne.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 25)),
+            imageViewOne.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 210)),
+            imageViewOne.widthAnchor.constraint(equalToConstant: CGFloat.dWidth(padding: 150)),
+            
+            imageViewTwo.topAnchor.constraint(equalTo: randomMoviesLabel.bottomAnchor, constant: CGFloat.dHeight(padding: 20)),
+            imageViewTwo.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -25)),
+            imageViewTwo.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 210)),
+            imageViewTwo.widthAnchor.constraint(equalToConstant: CGFloat.dWidth(padding: 150)),
+        
+            trendingMovieslabel.topAnchor.constraint(equalTo: imageViewTwo.bottomAnchor, constant: CGFloat.dHeight(padding: 12)),
+            trendingMovieslabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 24)),
+            trendingMovieslabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -252)),
+            
+            trendingCollectionView.topAnchor.constraint(equalTo: trendingMovieslabel.bottomAnchor, constant: CGFloat.dHeight(padding: 4)),
             trendingCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             trendingCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             trendingCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
@@ -72,20 +128,32 @@ class TrendingUIView: UIView {
         fatalError()
     }
     
-    func reloadData() {
+    func dataAndRefreshed(model: [Results]) {
+        self.model = model
         trendingCollectionView.reloadData()
+    }
+    
+    private func randomMovie() -> Results? {
+        return model.randomElement()
+    }
+    
+    private func showRandomMovies() {
+        imageViewOne.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w500\(self.randomMovie()?.poster_path ?? "")" ))
+        imageViewTwo.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w500\(self.randomMovie()?.poster_path ?? "")" ))
+        imageViewOne.reloadInputViews()
+        imageViewTwo.reloadInputViews()
     }
 }
 
 extension TrendingUIView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return delegate?.showMovies()?.count ?? 0
+        return model.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrendingCollectionViewCell.identifier, for: indexPath) as! TrendingCollectionViewCell
         
-        let movie = delegate?.showMovies()?[indexPath.item]
+        let movie = model[indexPath.item]
         cell.showModel(model: movie)
         
         return cell

@@ -13,7 +13,7 @@ class TrendingCollectionViewCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.backgroundColor = .blue
+        imageView.backgroundColor = .clear
         imageView.layer.cornerRadius = 20
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill

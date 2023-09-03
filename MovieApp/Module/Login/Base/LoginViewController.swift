@@ -34,6 +34,10 @@ class LoginViewController: UIViewController {
         presenter.viewDidLoad()
     }
     
+    deinit {
+        print("DEİNİT \(self.classForCoder)")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

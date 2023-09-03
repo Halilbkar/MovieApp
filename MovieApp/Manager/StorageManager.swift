@@ -17,6 +17,9 @@ protocol RealmManagerProtocol {
 
 final class RealmManager: RealmManagerProtocol {
     
+    static let shared = RealmManager()
+    private init() {}
+    
     private let realm = try! Realm()
 
     func create<T: Object>(_ object: T, onError: (RealmError) -> ()) {
@@ -51,6 +54,17 @@ final class RealmManager: RealmManagerProtocol {
         do {
             try realm.write {
                 realm.delete(object)
+            }
+        } catch {
+            print(error.localizedDescription)
+            onError(.deleteFailed)
+        }
+    }
+    
+    func deleteAll(onError: (RealmError) -> ()) {
+        do {
+            try realm.write {
+                realm.deleteAll()
             }
         } catch {
             print(error.localizedDescription)

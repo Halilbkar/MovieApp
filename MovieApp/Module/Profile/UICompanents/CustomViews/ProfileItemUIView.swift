@@ -8,7 +8,6 @@
 import UIKit
 
 protocol ProfileItemUIViewProtocol: AnyObject {
-    func showItems() -> [ProfileRowItemModel]?
     func signOutTapped()
 }
 
@@ -47,6 +46,8 @@ class ProfileItemUIView: UIView {
     }()
     
     weak var delegate: ProfileItemUIViewProtocol?
+    
+    private let model = ProfileRowItem.allCases
     
     override init(frame: CGRect) {
         super .init(frame: frame)
@@ -89,14 +90,14 @@ extension ProfileItemUIView {
 
 extension ProfileItemUIView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return delegate?.showItems()?.count ?? 0
+        return model.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileItemTableViewCell.identifier, for: indexPath) as? ProfileItemTableViewCell else { return UITableViewCell() }
         
-        cell.showModel(model: delegate?.showItems()?[indexPath.row])
+        cell.showModel(model: model[indexPath.row])
         
         return cell
     }

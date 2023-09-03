@@ -43,6 +43,10 @@ class ProfileViewController: UIViewController {
         presenter.viewDidLoad()
     }
     
+    deinit {
+        print("DEİNİT \(self.classForCoder)")
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
@@ -86,10 +90,6 @@ extension ProfileViewController: ProfileViewProtocol {
 extension ProfileViewController: ProfileItemUIViewProtocol {
     func signOutTapped() {
         presenter.signOutTapped()
-    }
-    
-    func showItems() -> [ProfileRowItemModel]? {
-        presenter.showItems()
     }
 }
 

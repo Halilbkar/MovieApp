@@ -64,7 +64,7 @@ extension MoviesPresenter: MoviesPresenterInputs {
 }
 
 extension MoviesPresenter: MoviesInteractorOutputs {
-    func dataRefreshed(movies: [Results]) {
-        view?.dataRefreshed(movies: movies)
+    func dataAndRefreshed(model: [Results]) {
+        view?.dataAndRefreshed(model: model)
     }
 }

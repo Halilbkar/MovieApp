@@ -10,7 +10,6 @@ import UIKit.UIImagePickerController
 
 protocol ProfilePresenterProtocol {
     func viewDidLoad()
-    func showItems() -> [ProfileRowItemModel]?
     func signOutTapped()
     func toImagePicker(imagePicker: UIImagePickerController)
     func selectedImage(imageData: Data)
@@ -35,10 +34,6 @@ extension ProfilePresenter: ProfilePresenterProtocol {
         view?.prepareProfileItemView()
         interactor?.getuserInfo()
         interactor?.getProfileImage()
-    }
-    
-    func showItems() -> [ProfileRowItemModel]? {
-        interactor?.showItems()
     }
     
     func signOutTapped() {
