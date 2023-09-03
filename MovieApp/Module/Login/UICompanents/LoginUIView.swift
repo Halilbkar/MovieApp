@@ -75,7 +75,7 @@ class LoginUIView: UIView {
         textField.setPlaceholder(text: "Type your password", fontSize: 10, color: .systemGray4)
         textField.addBottomLine(color: .systemGray4, height: 1)
         textField.addLogo(image: "key.horizontal.fill")
-        textField.addRightButton(withTitle: buttonImageTitle, target: self, action: #selector(securityPassTapped))
+        textField.addRightButton(withTitle: "eye.slash", target: self, action: #selector(securityPassTapped))
         
         
         return textField
@@ -207,7 +207,7 @@ extension LoginUIView {
     
     @objc func securityPassTapped() {
         passwordTextField.isSecureTextEntry.toggle()
-        buttonImageTitle = passwordTextField.isSecureTextEntry ? "eye.slash" : "eye"
+        print(passwordTextField.isSecureTextEntry)
     }
 }
 

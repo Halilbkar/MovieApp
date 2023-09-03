@@ -11,11 +11,12 @@ typealias MoviesHandler = (Result<MovieModel, NetworkError>) -> Void
 typealias MovieDetailHandler = (Result<MovieModel, NetworkError>) -> Void
 
 protocol MoviesServiceProtocol {
-    func fetchPopularMovies(completion: @escaping MoviesHandler) async throws
-    func fetchTrendingMovies(completion: @escaping MoviesHandler) async throws
-    func fetchTopRatedMovies(completion: @escaping MoviesHandler) async throws
-    func fetchDiscoverMovies(completion: @escaping MoviesHandler) async throws
-    func fetchUpComingMovies(completion: @escaping MoviesHandler) async throws
+//    func fetchPopularMovies(completion: @escaping MoviesHandler) async throws
+//    func fetchTrendingMovies(completion: @escaping MoviesHandler) async throws
+//    func fetchTopRatedMovies(completion: @escaping MoviesHandler) async throws
+//    func fetchDiscoverMovies(completion: @escaping MoviesHandler) async throws
+//    func fetchUpComingMovies(completion: @escaping MoviesHandler) async throws
+    func fetchCategoryMovies(category: MoviesEndpoint, completion: @escaping MoviesHandler) async throws
 }
 
 final class MoviesService {
@@ -72,6 +73,16 @@ extension MoviesService: MoviesServiceProtocol {
         do {
             let endpoint = MoviesEndpoint.upComing
             let movies: MovieModel = try await networkManager.request(endpoint: endpoint)
+            completion(.success(movies))
+        } catch let error as NetworkError {
+            print("Fetch upcoming movies error: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    func fetchCategoryMovies(category: MoviesEndpoint, completion: @escaping MoviesHandler) async throws {
+        do {
+            let movies: MovieModel = try await networkManager.request(endpoint: category)
             completion(.success(movies))
         } catch let error as NetworkError {
             print("Fetch upcoming movies error: \(error.localizedDescription)")

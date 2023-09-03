@@ -9,6 +9,7 @@ import Foundation
 
 protocol HomePresenterIntputs {
     func viewDidLoad()
+    func viewWillAppear()
     func showMovies() -> [Results]?
     func showMoviesImage() -> Results?
 }
@@ -35,6 +36,11 @@ extension HomePresenter: HomePresenterIntputs {
         view?.showMoviesImage()
         interactor?.getData()
         interactor?.getUserProfilePictureAndEmail()
+        interactor?.getProfileImage()
+    }
+    
+    func viewWillAppear() {
+        interactor?.getProfileImage()
     }
     
     func showMovies() -> [Results]? {
@@ -57,5 +63,9 @@ extension HomePresenter: HomeInteractorOutputs {
     
     func showProfileImageAndEmail(model: CurrentUserModel) {
         view?.showProfileImageAndEmail(model: model)
+    }
+    
+    func showImageItems(model: [SelectedImageModelRealm]) {
+        view?.showImageItems(model: model)
     }
 }

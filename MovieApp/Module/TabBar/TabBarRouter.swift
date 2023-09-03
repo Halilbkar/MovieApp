@@ -31,7 +31,6 @@ class TabBarRouter {
         
         return view
     }
-    
 }
 
 extension TabBarRouter: TabBarRouterProtocol {

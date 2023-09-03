@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -15,11 +16,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = UINavigationController(rootViewController: LoginRouter.startExecution())
+
+        if Auth.auth().currentUser != nil {
+            window?.rootViewController = TabBarRouter.startExecution()
+        } else {
+            /// We can make the onboarding page visible only once, but it is not important for this project.
+            window?.rootViewController = UINavigationController(rootViewController: TabBarRouter.startExecution())
+        }
+        
         window?.makeKeyAndVisible()
+        
+        RootWindowManager.shared.window = self.window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

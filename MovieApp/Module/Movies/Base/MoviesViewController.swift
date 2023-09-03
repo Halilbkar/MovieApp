@@ -9,21 +9,11 @@ import UIKit
 
 protocol MoviesViewProtocol: AnyObject {
     func setViewBackgroundColor(color: String)
-    func prepareSearchUIView()
     func prepareMoviesUIView()
-    func dataRefreshed()
+    func dataRefreshed(movies: [Results])
 }
 
 final class MoviesViewController: UIViewController {
-    
-    private lazy var searchUIView: SearchUIView = {
-        let view = SearchUIView()
-        
-        view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
     
     private lazy var moviesUIView: MoviesUIView = {
         let view = MoviesUIView()
@@ -46,16 +36,10 @@ final class MoviesViewController: UIViewController {
         super.viewWillLayoutSubviews()
         
         NSLayoutConstraint.activate([
-            
-            searchUIView.topAnchor.constraint(equalTo: view.topAnchor),
-            searchUIView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchUIView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            searchUIView.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 150)),
-            
-            moviesUIView.topAnchor.constraint(equalTo: searchUIView.bottomAnchor),
+            moviesUIView.topAnchor.constraint(equalTo: view.topAnchor),
             moviesUIView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             moviesUIView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            moviesUIView.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 600)),
+            moviesUIView.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 800)),
         ])
     }
 }
@@ -65,16 +49,12 @@ extension MoviesViewController: MoviesViewProtocol {
         view.backgroundColor = UIColor(named: color)
     }
     
-    func prepareSearchUIView() {
-        view.addSubview(searchUIView)
-    }
-    
     func prepareMoviesUIView() {
         view.addSubview(moviesUIView)
     }
     
-    func dataRefreshed() {
-        moviesUIView.reloadData()
+    func dataRefreshed(movies: [Results]) {
+        moviesUIView.setMovies(movies: movies)
     }
 }
 
@@ -86,10 +66,6 @@ extension MoviesViewController: MoviesUIViewProtocol {
     func isFav(model: Results?) -> Bool? {
         presenter.isFav(model: model)
     }
-    
-    func showMovies() -> [Results]? {
-        presenter.showMovies()
-    }
 
     func showMoviesTitle() -> [MoviesTitle]? {
         presenter.showMoviesTitle()
@@ -97,11 +73,5 @@ extension MoviesViewController: MoviesUIViewProtocol {
     
     func selectTitle(_ isSelect: MoviesTitle?) {
         presenter.getData(isSelect: isSelect)
-    }
-}
-
-extension MoviesViewController: SearchUIViewProtocol {
-    func searchDidChange(text: String) {
-        presenter.searchTextDidChange(text: text)
     }
 }

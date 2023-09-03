@@ -9,12 +9,10 @@ import Foundation
 
 protocol MoviesPresenterInputs {
     func viewDidLoad()
-    func showMovies() -> [Results]?
     func showMoviesTitle() -> [MoviesTitle]?
     func getData(isSelect: MoviesTitle?)
     func addFav(model: Results?)
     func isFav(model: Results?) -> Bool?
-    func searchTextDidChange(text: String)
 }
 
 final class MoviesPresenter {
@@ -32,14 +30,8 @@ final class MoviesPresenter {
 extension MoviesPresenter: MoviesPresenterInputs {
     func viewDidLoad() {
         view?.setViewBackgroundColor(color: "background")
-        view?.prepareSearchUIView()
         view?.prepareMoviesUIView()
-        view?.dataRefreshed()
-        interactor?.getTrendingData()
-    }
-    
-    func showMovies() -> [Results]? {
-        interactor?.showMovies()
+        interactor?.getCategoryData(category: .trending)
     }
     
     func showMoviesTitle() -> [MoviesTitle]? {
@@ -49,15 +41,15 @@ extension MoviesPresenter: MoviesPresenterInputs {
     func getData(isSelect: MoviesTitle?) {
         switch isSelect {
         case .discover:
-            interactor?.getDiscoverData()
+            interactor?.getCategoryData(category: .discover)
         case .popular:
-            interactor?.getPopularData()
+            interactor?.getCategoryData(category: .popular)
         case .topRated:
-            interactor?.getTopRatedData()
+            interactor?.getCategoryData(category: .topRated)
         case .trending:
-            interactor?.getTrendingData()
+            interactor?.getCategoryData(category: .trending)
         case .upComing:
-            interactor?.getUpComingData()
+            interactor?.getCategoryData(category: .upComing)
         default: break
         }
     }
@@ -69,14 +61,10 @@ extension MoviesPresenter: MoviesPresenterInputs {
     func addFav(model: Results?) {
         interactor?.addFav(model: model)
     }
-    
-    func searchTextDidChange(text: String) {
-        interactor?.searchTextDidChange(text: text)
-    }
 }
 
 extension MoviesPresenter: MoviesInteractorOutputs {
-    func dataRefreshed() {
-        view?.dataRefreshed()
+    func dataRefreshed(movies: [Results]) {
+        view?.dataRefreshed(movies: movies)
     }
 }

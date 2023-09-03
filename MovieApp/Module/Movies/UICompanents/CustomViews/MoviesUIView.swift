@@ -8,7 +8,6 @@
 import UIKit
 
 protocol MoviesUIViewProtocol: AnyObject {
-    func showMovies() -> [Results]?
     func showMoviesTitle() -> [MoviesTitle]?
     func selectTitle(_ isSelect: MoviesTitle?)
     func addFavorites(model: Results?)
@@ -16,6 +15,31 @@ protocol MoviesUIViewProtocol: AnyObject {
 }
 
 class MoviesUIView: UIView {
+    
+    private lazy var label: UILabel = {
+        let label = UILabel()
+        
+        label.text = "Find Movies or watch more movies"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = .boldSystemFont(ofSize: CGFloat.dWidth(padding: 20))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        
+        searchBar.placeholder = "Search"
+        searchBar.layer.cornerRadius = 16
+        searchBar.clipsToBounds = true
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        searchBar.delegate = self
+        
+        return searchBar
+    }()
     
     private lazy var moviesCollectionView: UICollectionView = {
         
@@ -63,11 +87,16 @@ class MoviesUIView: UIView {
         }
     }
     
+    private var movies: [Results] = []
+    private var filteredMovies: [Results] = []
+    
     override init(frame: CGRect) {
         super .init(frame: frame)
         
         backgroundColor = .clear
         
+        addSubview(label)
+        addSubview(searchBar)
         addSubview(moviesTitleCollectionView)
         addSubview(moviesCollectionView)
     }
@@ -77,7 +106,16 @@ class MoviesUIView: UIView {
         
         NSLayoutConstraint.activate([
             
-            moviesTitleCollectionView.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat.dHeight(padding: 4)),
+            label.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat.dHeight(padding: 60)),
+            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 24)),
+            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -24)),
+            
+            searchBar.topAnchor.constraint(equalTo: label.bottomAnchor, constant: CGFloat.dHeight(padding: 24)),
+            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 36)),
+            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -24)),
+            searchBar.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 36)),
+            
+            moviesTitleCollectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: CGFloat.dHeight(padding: 12)),
             moviesTitleCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             moviesTitleCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             moviesTitleCollectionView.heightAnchor.constraint(equalToConstant: CGFloat.dHeight(padding: 32)),
@@ -96,6 +134,12 @@ class MoviesUIView: UIView {
     func reloadData() {
         moviesCollectionView.reloadData()
     }
+    
+    public func setMovies(movies: [Results]) {
+        self.movies = movies
+        self.filteredMovies = movies
+        moviesCollectionView.reloadData()
+    }
 }
 
 extension MoviesUIView: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -106,7 +150,7 @@ extension MoviesUIView: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         if collectionView == moviesCollectionView {
-            return delegate?.showMovies()?.count ?? 0
+            return movies.count
         }
         
         return Int()
@@ -126,7 +170,7 @@ extension MoviesUIView: UICollectionViewDelegate, UICollectionViewDataSource {
         if collectionView == moviesCollectionView {
             guard let titleCell = collectionView.dequeueReusableCell(withReuseIdentifier: MoviesCollectionViewCell.identifier, for: indexPath) as? MoviesCollectionViewCell else { return UICollectionViewCell() }
             
-            titleCell.showModel(model: delegate?.showMovies()?[indexPath.row])
+            titleCell.showModel(model: movies[indexPath.row])
             
             return titleCell
         }
@@ -137,12 +181,13 @@ extension MoviesUIView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == moviesTitleCollectionView {
             isSelect = delegate?.showMoviesTitle()?[indexPath.row]
+            
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
-        let selectMovie = delegate?.showMovies()?[indexPath.row]
+        let selectMovie = movies[indexPath.row]
         var actionTitle = ""
         
         if !(delegate?.isFav(model: selectMovie))! {
@@ -151,13 +196,27 @@ extension MoviesUIView: UICollectionViewDelegate, UICollectionViewDataSource {
             actionTitle = "Remove from Favorites"
         }
         
-        let downloadAction = UIAction(title: actionTitle) { [weak self] _ in
+        let addFavoriteAction = UIAction(title: actionTitle) { [weak self] _ in
             guard let self else { return }
             self.delegate?.addFavorites(model: selectMovie)
         }
-
+        
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
-            UIMenu(title: "", options: .displayInline, children: [downloadAction])
+            UIMenu(title: "", options: .displayInline, children: [addFavoriteAction])
         }
+    }
+}
+
+extension MoviesUIView: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            movies = filteredMovies
+        } else {
+            movies = filteredMovies
+            self.movies = movies.filter({ movies in
+                movies.original_title.lowercased().contains(searchText.lowercased())
+            })
+        }
+        moviesCollectionView.reloadData()
     }
 }

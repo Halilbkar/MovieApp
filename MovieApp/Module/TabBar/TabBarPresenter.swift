@@ -21,7 +21,6 @@ class TabBarPresenter {
         self.interactor = interactor
         self.router = router
     }
-    
 }
 
 extension TabBarPresenter: TabBarPresenterInputs {

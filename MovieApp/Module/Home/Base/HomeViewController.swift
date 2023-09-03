@@ -15,6 +15,7 @@ protocol HomeViewProtocol: AnyObject {
     func dataRefreshed()
     func showMoviesImage()
     func showProfileImageAndEmail(model: CurrentUserModel)
+    func showImageItems(model: [SelectedImageModelRealm]?)
 }
 
 final class HomeViewController: UIViewController {
@@ -51,6 +52,12 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         presenter.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter.viewWillAppear()
     }
     
     override func viewWillLayoutSubviews() {
@@ -104,6 +111,10 @@ extension HomeViewController: HomeViewProtocol {
     
     func showProfileImageAndEmail(model: CurrentUserModel) {
         customNavBarView.showModel(model: model)
+    }
+    
+    func showImageItems(model: [SelectedImageModelRealm]?) {
+        customNavBarView.showProfileImage(model: model)
     }
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MoviesEndpoint: EndpointProtocol {
+enum MoviesEndpoint: EndpointProtocol, CaseIterable {
     
     case trending
     case popular

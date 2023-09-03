@@ -39,11 +39,7 @@ class ProfileInteractor  {
         self.storageManager = storageManager
     }
     
-    private var imageItems: [SelectedImageModelRealm] = [] {
-        didSet {
-            
-        }
-    }
+    private var imageItems: [SelectedImageModelRealm] = []
 }
 
 extension ProfileInteractor: ProfileInteractorInputs {
@@ -75,31 +71,20 @@ extension ProfileInteractor: ProfileInteractorInputs {
     func selectedImage(imageData: Data?) {
         guard let imageData = imageData else { return }
         
-        let favs = storageManager?.getAll(SelectedImageModelRealm.self).filter ({ $0.userId == userInfoManager?.getUserUid() })
+        guard let userId = userInfoManager?.getUserUid() else { return }
         
-        if let index = favs?.firstIndex(where: { $0.imageData == imageData }) {
-            if let item = favs?[index] {
-                storageManager?.delete(item, onError: { error in
-                    print(error.localizedDescription)
-                })
-            } else {
-                print("Önceki fotoğrafı bulma hatası")
-                return
+        if let previousImage = storageManager?.getAll(SelectedImageModelRealm.self).first(where: { $0.userId == userId }) {
+            storageManager?.delete(previousImage) { error in
+                print(error.localizedDescription)
             }
-        } else {
-            print("Önceki fotoğraf bulunamadı")
         }
         
-        let userId = userInfoManager?.getUserUid()
-        
-        let favModel = SelectedImageModelRealm(userId: userId,
-                                               imageData: imageData)
-        
-        storageManager?.create(favModel, onError: { error in
+        let newSelectedImage = SelectedImageModelRealm(userId: userId, imageData: imageData)
+        storageManager?.create(newSelectedImage, onError: { error in
             print(error.localizedDescription)
         })
     }
-    
+
     func getProfileImage() {
         self.imageItems = storageManager?.getAll(SelectedImageModelRealm.self).filter ({ $0.userId == userInfoManager?.getUserUid() }) ?? []
         presenter?.showImageItems(model: imageItems)

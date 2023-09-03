@@ -68,6 +68,10 @@ class UserInfoUIView: UIView {
     
     weak var delegate: UserInfoUIViewProtocol?
     
+    private var profileModel = [SelectedImageModelRealm]()
+    
+    let imageLogo = "https://img.freepik.com/free-vector/branding-identity-corporate-vector-logo-m-design_460848-10168.jpg?w=996&t=st=1693574825~exp=1693575425~hmac=d0503a2fb61f88700c909b2f9ef4c99bc0d36916a9e736fca837746f60a66799"
+    
     override init(frame: CGRect) {
         super .init(frame: frame)
         
@@ -128,6 +132,7 @@ extension UserInfoUIView {
     @objc private func imageViewTapped() {
         if model?.profileImageURLString == nil {
             delegate?.toImagePicker(imagePicker: imagePicker)
+            print("AKTİF")
         } else {
             return
         }
@@ -139,21 +144,21 @@ extension UserInfoUIView {
 extension UserInfoUIView {
     func showModel(model: CurrentUserModel?) {
         self.model = model
-        
-        let imageLogo = "https://img.freepik.com/free-vector/branding-identity-corporate-vector-logo-m-design_460848-10168.jpg?w=996&t=st=1693574825~exp=1693575425~hmac=d0503a2fb61f88700c909b2f9ef4c99bc0d36916a9e736fca837746f60a66799"
-        
+
         label.text = model?.name ?? ""
         imageView.sd_setImage(with: URL(string: model?.profileImageURLString ?? imageLogo))
     }
     
     func showProfileImage(model: [SelectedImageModelRealm]?) {
-        guard let model else { return }
-        
-        if let modelItem = model.first {
-            if let getImage = modelItem.imageData {
-                imageView.image = UIImage(data: getImage)
-            } else {
-                print("Veri çekilemedi.")
+        if self.model?.profileImageURLString == nil {
+            guard let model else { return }
+            print("ÇALIŞTIIII")
+            if let modelItem = model.first {
+                if let getImage = modelItem.imageData {
+                    imageView.image = UIImage(data: getImage)
+                } else {
+                    print("Veri çekilemedi.")
+                }
             }
         }
     }

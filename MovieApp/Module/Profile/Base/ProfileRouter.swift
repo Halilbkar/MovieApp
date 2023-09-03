@@ -16,14 +16,16 @@ protocol ProfileRouterProtocol {
 class ProfileRouter {
     
     private weak var view: UIViewController?
-    
-    init(view: UIViewController) {
+    private let windowManager: RootWindowManagerProtocol?
+
+    init(view: UIViewController, windowManager: RootWindowManagerProtocol) {
         self.view = view
+        self.windowManager = windowManager
     }
     
     static func startExecution() -> UIViewController {
         let view = ProfileViewController()
-        let router = ProfileRouter(view: view)
+        let router = ProfileRouter(view: view, windowManager: RootWindowManager.shared)
         let interactor = ProfileInteractor(userInfoManager: UserInfoManager(), authManager: AuthManager(), storageManager: RealmManager())
         let presenter = ProfilePresenter(view: view, interactor: interactor, router: router)
         
@@ -36,8 +38,8 @@ class ProfileRouter {
 
 extension ProfileRouter: ProfileRouterProtocol {
     func toLogin() {
-        let loginModule = LoginRouter.startExecution()
-        view?.navigationController?.pushViewController(loginModule, animated: true)
+        let loginModule = UINavigationController(rootViewController: LoginRouter.startExecution())
+        windowManager?.changeRootViewController(loginModule, animated: true)
     }
     
     func toImagePicker(imagePicker: UIImagePickerController) {

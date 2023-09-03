@@ -13,7 +13,7 @@ class CustomNavBarUIView: UIView {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
         
         imageView.backgroundColor = .blue
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.borderWidth = 0.5
         imageView.layer.borderColor = UIColor.systemGray5.cgColor
         imageView.layer.cornerRadius = imageView.frame.size.width / 2
@@ -48,6 +48,12 @@ class CustomNavBarUIView: UIView {
         
         return label
     }()
+    
+    private var model: CurrentUserModel?
+    
+    private var profileModel: [SelectedImageModelRealm]?
+    
+    let imageLogo = "https://img.freepik.com/free-vector/branding-identity-corporate-vector-logo-m-design_460848-10168.jpg?w=996&t=st=1693574825~exp=1693575425~hmac=d0503a2fb61f88700c909b2f9ef4c99bc0d36916a9e736fca837746f60a66799"
 
     override init(frame: CGRect) {
         super .init(frame: frame)
@@ -91,10 +97,24 @@ class CustomNavBarUIView: UIView {
     }
     
     func showModel(model: CurrentUserModel) {
-        let imageLogo = "https://img.freepik.com/free-vector/branding-identity-corporate-vector-logo-m-design_460848-10168.jpg?w=996&t=st=1693574825~exp=1693575425~hmac=d0503a2fb61f88700c909b2f9ef4c99bc0d36916a9e736fca837746f60a66799"
-        
+        self.model = model
+
         welcomeLabel.text = "Welcome,"
         profilePhotoImageView.sd_setImage(with: URL(string: model.profileImageURLString ?? imageLogo))
         userNameLabel.text = model.name ?? "MovieApp"
+    }
+    
+    func showProfileImage(model: [SelectedImageModelRealm]?) {
+        if self.model?.profileImageURLString == nil {
+            guard let model else { return }
+
+            if let modelItem = model.first {
+                if let getImage = modelItem.imageData {
+                    profilePhotoImageView.image = UIImage(data: getImage)
+                } else {
+                    print("Veri çekilemedi.")
+                }
+            }
+        }
     }
 }
