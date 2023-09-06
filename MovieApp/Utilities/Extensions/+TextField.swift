@@ -35,17 +35,14 @@ extension UITextField {
     }
     
     func addRightButton(withTitle title: String, target: Any?, action: Selector) {
-        // Buton oluştur
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: title), for: .normal)
-        button.tintColor = .label
+        button.tintColor = .black
         button.addTarget(target, action: action, for: .touchUpInside)
         
-        // Butonun boyutunu ayarla
         let buttonSize = CGSize(width: 80, height: self.frame.size.height)
         button.frame = CGRect(origin: .zero, size: buttonSize)
         
-        // Butonu sağ tarafta göster
         self.rightView = button
         self.rightViewMode = .always
     }

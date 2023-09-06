@@ -66,17 +66,21 @@ class FavoritesMoviesUIView: UIView {
         config.baseForegroundColor = .white
         config.cornerStyle = .capsule
         config.buttonSize = .medium
-        config.attributedTitle?.font = UIFont.boldSystemFont(ofSize: 12)
+        config.attributedTitle?.font = UIFont.boldSystemFont(ofSize: CGFloat.dWidth(padding: 12))
         
         let button = UIButton(configuration: config)
         
-//        button.setTitle("Clear List", for: .normal)
-//        button.setTitleColor(.white, for: .normal)
-//        button.layer.borderWidth = 1
-//        button.layer.borderColor = UIColor.white.cgColor
-//        button.layer.cornerRadius = CGFloat.dWidth(padding: 12)
-        
         button.addTarget(self, action: #selector(removeAll), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
+    }()
+    
+    private lazy var sortedButton: UIButton = {
+        let button = UIButton()
+        
+        button.setImage(UIImage(systemName: "list.and.film"), for: .normal)
+        button.tintColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -95,8 +99,11 @@ class FavoritesMoviesUIView: UIView {
         
         addSubview(label)
         addSubview(removeAllButton)
+        addSubview(sortedButton)
         addSubview(favoritesTableView)
         addSubview(emptyLabel)
+        
+        sortedButtonTapped()
     }
     
     override func layoutSubviews() {
@@ -111,6 +118,9 @@ class FavoritesMoviesUIView: UIView {
             removeAllButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: CGFloat.dHeight(padding: 4)),
             removeAllButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWidth(padding: -10)),
             
+            sortedButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: CGFloat.dHeight(padding: 4)),
+            sortedButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 10)),
+
             favoritesTableView.topAnchor.constraint(equalTo: removeAllButton.bottomAnchor, constant: CGFloat.dHeight(padding: 4)),
             favoritesTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             favoritesTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -125,10 +135,6 @@ class FavoritesMoviesUIView: UIView {
     
     required init(coder: NSCoder) {
         fatalError()
-    }
-    
-    func dataRefreshed() {
-        favoritesTableView.reloadData()
     }
     
     private func modelCount() -> Int {
@@ -150,6 +156,35 @@ class FavoritesMoviesUIView: UIView {
     @objc private func removeAll() {
         delegate?.deleteAll()
         self.favoriteMoviesModel.removeAll()
+    }
+    
+    private func sortedButtonTapped() {
+        
+        var state: Bool = true
+        
+        let menu = UIMenu(title: "Sort Movies", children: [
+
+            UIAction(title: "Name", handler: { action in
+                 
+                self.favoriteMoviesModel.sort { $0.movieTitle < $1.movieTitle }
+                
+            }),
+            UIAction(title: "Date", handler: { _ in
+                self.favoriteMoviesModel.sort { $0.release_date < $1.release_date }
+            }),
+            
+            UIAction(title: "IMDB", handler: { _ in
+                if state {
+                    self.favoriteMoviesModel.sort { $0.vote_average < $1.vote_average }
+                } else {
+                    self.favoriteMoviesModel.sort { $0.vote_average > $1.vote_average }
+                }
+                
+                state.toggle()
+            })])
+        
+        sortedButton.menu = menu
+        sortedButton.showsMenuAsPrimaryAction = true
     }
 }
 

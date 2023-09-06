@@ -39,6 +39,11 @@
 		EF1CCBD02A98151300EC4C03 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBCF2A98151300EC4C03 /* LoginViewController.swift */; };
 		EF1CCBD62A98161200EC4C03 /* LoginUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1CCBD52A98161200EC4C03 /* LoginUIView.swift */; };
 		EF37BAE42A9B7AC700291E72 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = EF37BAE32A9B7AC700291E72 /* SDWebImage */; };
+		EF50C67D2AA778590054CACB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF50C67C2AA778590054CACB /* DetailViewController.swift */; };
+		EF50C67F2AA778610054CACB /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF50C67E2AA778610054CACB /* DetailPresenter.swift */; };
+		EF50C6812AA778690054CACB /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF50C6802AA778690054CACB /* DetailInteractor.swift */; };
+		EF50C6832AA778700054CACB /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF50C6822AA778700054CACB /* DetailRouter.swift */; };
+		EF50C6852AA77AD80054CACB /* DetailUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF50C6842AA77AD80054CACB /* DetailUIView.swift */; };
 		EF542F772AA12A6A0079286A /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF542F762AA12A6A0079286A /* FavoritesViewController.swift */; };
 		EF542F792AA12A740079286A /* FavoritesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF542F782AA12A740079286A /* FavoritesInteractor.swift */; };
 		EF542F7B2AA12A7F0079286A /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF542F7A2AA12A7F0079286A /* FavoritesPresenter.swift */; };
@@ -122,6 +127,11 @@
 		EF1CCBCC2A98150400EC4C03 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		EF1CCBCF2A98151300EC4C03 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EF1CCBD52A98161200EC4C03 /* LoginUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUIView.swift; sourceTree = "<group>"; };
+		EF50C67C2AA778590054CACB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		EF50C67E2AA778610054CACB /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		EF50C6802AA778690054CACB /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
+		EF50C6822AA778700054CACB /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
+		EF50C6842AA77AD80054CACB /* DetailUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUIView.swift; sourceTree = "<group>"; };
 		EF542F762AA12A6A0079286A /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		EF542F782AA12A740079286A /* FavoritesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesInteractor.swift; sourceTree = "<group>"; };
 		EF542F7A2AA12A7F0079286A /* FavoritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
@@ -239,6 +249,7 @@
 		EF1CCB6F2A9671BB00EC4C03 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				EF50C6792AA7782F0054CACB /* Detail */,
 				EF1CCB982A968F2900EC4C03 /* TabBar */,
 				EF1CCBC52A9814C000EC4C03 /* Login */,
 				EF7207DA2A9B49FB00DFD466 /* SignUp */,
@@ -484,6 +495,34 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		EF50C6792AA7782F0054CACB /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				EF50C67A2AA7783F0054CACB /* Base */,
+				EF50C67B2AA778430054CACB /* UICompanents */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		EF50C67A2AA7783F0054CACB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EF50C67C2AA778590054CACB /* DetailViewController.swift */,
+				EF50C67E2AA778610054CACB /* DetailPresenter.swift */,
+				EF50C6802AA778690054CACB /* DetailInteractor.swift */,
+				EF50C6822AA778700054CACB /* DetailRouter.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		EF50C67B2AA778430054CACB /* UICompanents */ = {
+			isa = PBXGroup;
+			children = (
+				EF50C6842AA77AD80054CACB /* DetailUIView.swift */,
+			);
+			path = UICompanents;
+			sourceTree = "<group>";
+		};
 		EF542F732AA12A320079286A /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,6 +743,7 @@
 				EFA9D9E42A9E492600CC9B52 /* MoviesEntity.swift in Sources */,
 				EFB1B5C22AA389DB00606D9B /* +UIImage.swift in Sources */,
 				EF1CCB832A9673E200EC4C03 /* HomeRouter.swift in Sources */,
+				EF50C6812AA778690054CACB /* DetailInteractor.swift in Sources */,
 				EF1CCB5C2A9670F100EC4C03 /* SceneDelegate.swift in Sources */,
 				EF1CCBD02A98151300EC4C03 /* LoginViewController.swift in Sources */,
 				EF542F772AA12A6A0079286A /* FavoritesViewController.swift in Sources */,
@@ -717,6 +757,7 @@
 				EF542F832AA130390079286A /* FavoritesTableViewCell.swift in Sources */,
 				EFB1B5BD2AA2330C00606D9B /* ProfileRowItem.swift in Sources */,
 				EF5A77B32AA0FD85009C2078 /* CustomNavBarUIView.swift in Sources */,
+				EF50C6852AA77AD80054CACB /* DetailUIView.swift in Sources */,
 				EFA9D9E82A9E50BF00CC9B52 /* MoviesCollectionViewCell.swift in Sources */,
 				EF1CCBBB2A98096100EC4C03 /* +TabBarController.swift in Sources */,
 				EF1CCBA62A96903000EC4C03 /* ProfileViewController.swift in Sources */,
@@ -728,6 +769,7 @@
 				EF1CCBC22A9809F600EC4C03 /* NetworkError.swift in Sources */,
 				EF542F792AA12A740079286A /* FavoritesInteractor.swift in Sources */,
 				EF1CCB7D2A96739800EC4C03 /* HomePresenter.swift in Sources */,
+				EF50C67D2AA778590054CACB /* DetailViewController.swift in Sources */,
 				EF1CCBCB2A9814F600EC4C03 /* LoginPresenter.swift in Sources */,
 				EF1CCB922A9686FD00EC4C03 /* TrendingUIView.swift in Sources */,
 				EF1CCB882A9682E800EC4C03 /* +Cells.swift in Sources */,
@@ -746,6 +788,7 @@
 				EF1CCBAA2A96907E00EC4C03 /* MoviesPresenter.swift in Sources */,
 				EF7207BD2A98FA8F00DFD466 /* TabBarInteractor.swift in Sources */,
 				EF7207F42A9B63E800DFD466 /* MovieModel.swift in Sources */,
+				EF50C6832AA778700054CACB /* DetailRouter.swift in Sources */,
 				EF5A77A92AA0A708009C2078 /* ProfileEntity.swift in Sources */,
 				EF1CCB862A9682CF00EC4C03 /* +CGFloat.swift in Sources */,
 				EF7207BF2A98FA9700DFD466 /* TabBarPresenter.swift in Sources */,
@@ -754,6 +797,7 @@
 				EF1CCB7B2A96739100EC4C03 /* HomeInteractor.swift in Sources */,
 				EFB1B5B72AA1E1D100606D9B /* RealmError.swift in Sources */,
 				EF5A77AF2AA0B3AC009C2078 /* ProfileItemTableViewCell.swift in Sources */,
+				EF50C67F2AA778610054CACB /* DetailPresenter.swift in Sources */,
 				EF1CCBAE2A96909100EC4C03 /* ProfileInteractor.swift in Sources */,
 				EF1CCBC92A9814E700EC4C03 /* LoginRouter.swift in Sources */,
 				EFB1B5BF2AA2334400606D9B /* CurrentUserModel.swift in Sources */,

@@ -7,19 +7,30 @@
 
 import Foundation
 
-enum MoviesEndpoint: EndpointProtocol, CaseIterable {
+enum MoviesEndpoint: EndpointProtocol {
     
     case trending
     case popular
     case topRated
     case discover
     case upComing
+    case trailer
     
     var baseURL: URL {
-        guard let url = URL(string: "https://api.themoviedb.org/3") else {
+        guard let movieUrl = URL(string: "https://api.themoviedb.org/3") else {
             fatalError("url failed")
         }
-        return url
+        
+        guard let trailerUrl = URL(string: "https://api.themoviedb.org/3") else {
+            fatalError("url failed")
+        }
+        
+        switch self {
+        case .trending, .popular, .topRated, .discover, .upComing:
+            return movieUrl
+        case .trailer:
+            return trailerUrl
+        }
     }
     
     var path: String {
@@ -34,12 +45,14 @@ enum MoviesEndpoint: EndpointProtocol, CaseIterable {
             return "/discover/movie"
         case .upComing:
             return "/movie/upcoming"
+        case .trailer:
+            return "/movie/upcoming"
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .trending, .popular, .topRated, .discover, .upComing:
+        case .trending, .popular, .topRated, .discover, .upComing, .trailer:
             return .get
         }
     }
@@ -51,6 +64,8 @@ enum MoviesEndpoint: EndpointProtocol, CaseIterable {
     var parameters: [String : Any]? {
         switch self {
         case .trending, .popular, .topRated, .discover, .upComing:
+            return ["api_key": "f81dc68d4ad164dd20d18f0b531204b6"]
+        case .trailer:
             return ["api_key": "f81dc68d4ad164dd20d18f0b531204b6"]
         }
     }

@@ -78,7 +78,6 @@ class LoginUIView: UIView {
         textField.addLogo(image: "key.horizontal.fill")
         textField.addRightButton(withTitle: "eye.slash", target: self, action: #selector(securityPassTapped))
         
-        
         return textField
     }()
     
@@ -210,9 +209,11 @@ extension LoginUIView {
 //        }
     }
     
-    @objc func securityPassTapped() {
+    @objc func securityPassTapped(_ sender: UIButton) {
         passwordTextField.isSecureTextEntry.toggle()
-        print(passwordTextField.isSecureTextEntry)
+        sender.isSelected = passwordTextField.isSecureTextEntry
+        let title = sender.isSelected ? "eye.slash" : "eye"
+        sender.setImage(UIImage(systemName: title), for: .normal)
     }
 }
 
