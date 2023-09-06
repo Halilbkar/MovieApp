@@ -9,7 +9,7 @@ import Foundation
 import UIKit.UIViewController
 
 protocol DetailRouterProtocol {
-    
+    func toBack()
 }
 
 class DetailRouter {
@@ -20,10 +20,10 @@ class DetailRouter {
         self.view = view
     }
     
-    static func startExecution() -> UIViewController {
+    static func startExecution(movie: Results) -> UIViewController {
         let view = DetailViewController()
         let router = DetailRouter(view: view)
-        let interactor = DetailInteractor()
+        let interactor = DetailInteractor(movie: movie)
         let presenter = DetailPresenter(view: view, interactor: interactor, router: router)
         
         view.presenter = presenter
@@ -34,5 +34,7 @@ class DetailRouter {
 }
 
 extension DetailRouter: DetailRouterProtocol {
-    
+    func toBack() {
+        view?.navigationController?.popViewController(animated: true)
+    }
 }

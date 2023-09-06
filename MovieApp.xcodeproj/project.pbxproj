@@ -50,6 +50,9 @@
 		EF542F7D2AA12A890079286A /* FavoritesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF542F7C2AA12A890079286A /* FavoritesRouter.swift */; };
 		EF542F7F2AA12EB50079286A /* FavoritesMoviesUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF542F7E2AA12EB50079286A /* FavoritesMoviesUIView.swift */; };
 		EF542F832AA130390079286A /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF542F822AA130390079286A /* FavoritesTableViewCell.swift */; };
+		EF57ECA42AA8CDAF00DD7706 /* TrailerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF57ECA32AA8CDAF00DD7706 /* TrailerModel.swift */; };
+		EF57ECA62AA8E54700DD7706 /* MovieAndTrailerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF57ECA52AA8E54700DD7706 /* MovieAndTrailerModel.swift */; };
+		EF57ECA82AA90D4B00DD7706 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF57ECA72AA90D4B00DD7706 /* GoogleService-Info.plist */; };
 		EF5A77A92AA0A708009C2078 /* ProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5A77A82AA0A708009C2078 /* ProfileEntity.swift */; };
 		EF5A77AB2AA0B250009C2078 /* UserInfoUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5A77AA2AA0B250009C2078 /* UserInfoUIView.swift */; };
 		EF5A77AD2AA0B273009C2078 /* ProfileItemUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5A77AC2AA0B273009C2078 /* ProfileItemUIView.swift */; };
@@ -59,7 +62,6 @@
 		EF7207BD2A98FA8F00DFD466 /* TabBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207BC2A98FA8F00DFD466 /* TabBarInteractor.swift */; };
 		EF7207BF2A98FA9700DFD466 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207BE2A98FA9700DFD466 /* TabBarPresenter.swift */; };
 		EF7207C12A98FAA000DFD466 /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7207C02A98FAA000DFD466 /* TabBarRouter.swift */; };
-		EF7207C32A9900A300DFD466 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF7207C22A9900A300DFD466 /* GoogleService-Info.plist */; };
 		EF7207C62A99012C00DFD466 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EF7207C52A99012C00DFD466 /* FirebaseAuth */; };
 		EF7207C82A99012C00DFD466 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = EF7207C72A99012C00DFD466 /* FirebaseDatabase */; };
 		EF7207CA2A99012C00DFD466 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EF7207C92A99012C00DFD466 /* FirebaseFirestore */; };
@@ -138,6 +140,9 @@
 		EF542F7C2AA12A890079286A /* FavoritesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRouter.swift; sourceTree = "<group>"; };
 		EF542F7E2AA12EB50079286A /* FavoritesMoviesUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMoviesUIView.swift; sourceTree = "<group>"; };
 		EF542F822AA130390079286A /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
+		EF57ECA32AA8CDAF00DD7706 /* TrailerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerModel.swift; sourceTree = "<group>"; };
+		EF57ECA52AA8E54700DD7706 /* MovieAndTrailerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAndTrailerModel.swift; sourceTree = "<group>"; };
+		EF57ECA72AA90D4B00DD7706 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EF5A77A82AA0A708009C2078 /* ProfileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEntity.swift; sourceTree = "<group>"; };
 		EF5A77AA2AA0B250009C2078 /* UserInfoUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoUIView.swift; sourceTree = "<group>"; };
 		EF5A77AC2AA0B273009C2078 /* ProfileItemUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemUIView.swift; sourceTree = "<group>"; };
@@ -147,7 +152,6 @@
 		EF7207BC2A98FA8F00DFD466 /* TabBarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarInteractor.swift; sourceTree = "<group>"; };
 		EF7207BE2A98FA9700DFD466 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
 		EF7207C02A98FAA000DFD466 /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRouter.swift; sourceTree = "<group>"; };
-		EF7207C22A9900A300DFD466 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EF7207CD2A99021700DFD466 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		EF7207D42A99025E00DFD466 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		EF7207D62A9902A600DFD466 /* GeneralError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralError.swift; sourceTree = "<group>"; };
@@ -220,7 +224,7 @@
 				EF1CCBB32A969A4B00EC4C03 /* Core */,
 				EF1CCB6D2A96719B00EC4C03 /* Resources */,
 				EF1CCB672A9670F200EC4C03 /* Info.plist */,
-				EF7207C22A9900A300DFD466 /* GoogleService-Info.plist */,
+				EF57ECA72AA90D4B00DD7706 /* GoogleService-Info.plist */,
 			);
 			path = MovieApp;
 			sourceTree = "<group>";
@@ -611,6 +615,8 @@
 				EF7207F32A9B63E800DFD466 /* MovieModel.swift */,
 				EFB1B5B82AA1E6EB00606D9B /* FavoritesMoviesModel.swift */,
 				EFB1B5BE2AA2334400606D9B /* CurrentUserModel.swift */,
+				EF57ECA32AA8CDAF00DD7706 /* TrailerModel.swift */,
+				EF57ECA52AA8E54700DD7706 /* MovieAndTrailerModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -721,7 +727,7 @@
 			files = (
 				EF1CCB662A9670F200EC4C03 /* LaunchScreen.storyboard in Resources */,
 				EF1CCB632A9670F200EC4C03 /* Assets.xcassets in Resources */,
-				EF7207C32A9900A300DFD466 /* GoogleService-Info.plist in Resources */,
+				EF57ECA82AA90D4B00DD7706 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,6 +740,7 @@
 			files = (
 				EF542F7D2AA12A890079286A /* FavoritesRouter.swift in Sources */,
 				EF7207C12A98FAA000DFD466 /* TabBarRouter.swift in Sources */,
+				EF57ECA42AA8CDAF00DD7706 /* TrailerModel.swift in Sources */,
 				EF1CCBD62A98161200EC4C03 /* LoginUIView.swift in Sources */,
 				EFB1B5AC2AA1DB9600606D9B /* StorageManager.swift in Sources */,
 				EF1CCBBF2A9809AD00EC4C03 /* NetworkManager.swift in Sources */,
@@ -775,6 +782,7 @@
 				EF1CCB882A9682E800EC4C03 /* +Cells.swift in Sources */,
 				EFB1B5B92AA1E6EB00606D9B /* FavoritesMoviesModel.swift in Sources */,
 				EFA9D9E22A9E3D7000CC9B52 /* MoviesUIView.swift in Sources */,
+				EF57ECA62AA8E54700DD7706 /* MovieAndTrailerModel.swift in Sources */,
 				EF1CCBA02A96900E00EC4C03 /* MoviesViewController.swift in Sources */,
 				EFCE6A182AA410100060E307 /* RootWindowManager.swift in Sources */,
 				EF1CCBCD2A98150400EC4C03 /* LoginInteractor.swift in Sources */,
@@ -945,6 +953,7 @@
 				DEVELOPMENT_TEAM = 75RG469FX3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MovieApp/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "\"OKEY\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -972,6 +981,7 @@
 				DEVELOPMENT_TEAM = 75RG469FX3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MovieApp/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "\"OKEY\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

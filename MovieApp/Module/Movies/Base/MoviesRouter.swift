@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol MoviesRouterProtocol {
-
+    func toDetail(movie: Results)
 }
 
 class MoviesRouter {
@@ -34,5 +34,9 @@ class MoviesRouter {
 }
 
 extension MoviesRouter: MoviesRouterProtocol {
-    
+    func toDetail(movie: Results) {
+        let detailModule = DetailRouter.startExecution(movie: movie)
+        view?.navigationController?.pushViewController(detailModule, animated: true)
+        view?.tabBarController?.tabBar.isHidden = true
+    }
 }

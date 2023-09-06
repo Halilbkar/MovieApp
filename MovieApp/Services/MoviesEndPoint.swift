@@ -14,16 +14,12 @@ enum MoviesEndpoint: EndpointProtocol {
     case topRated
     case discover
     case upComing
-    case trailer
+    case trailer(query: String)
     
     var baseURL: URL {
-        guard let movieUrl = URL(string: "https://api.themoviedb.org/3") else {
-            fatalError("url failed")
-        }
+        guard let movieUrl = URL(string: "https://api.themoviedb.org/3") else { fatalError("url failed") }
         
-        guard let trailerUrl = URL(string: "https://api.themoviedb.org/3") else {
-            fatalError("url failed")
-        }
+        guard let trailerUrl = URL(string: "https://youtube.googleapis.com/youtube/v3") else { fatalError("url failed") }
         
         switch self {
         case .trending, .popular, .topRated, .discover, .upComing:
@@ -46,7 +42,7 @@ enum MoviesEndpoint: EndpointProtocol {
         case .upComing:
             return "/movie/upcoming"
         case .trailer:
-            return "/movie/upcoming"
+            return "/search"
         }
     }
     
@@ -65,8 +61,8 @@ enum MoviesEndpoint: EndpointProtocol {
         switch self {
         case .trending, .popular, .topRated, .discover, .upComing:
             return ["api_key": "f81dc68d4ad164dd20d18f0b531204b6"]
-        case .trailer:
-            return ["api_key": "f81dc68d4ad164dd20d18f0b531204b6"]
+        case .trailer(let query):
+            return ["key": "AIzaSyD4IgjFHsybpxsFsrNsRjrWc4TJG9_TcxI", "q": query]
         }
     }
 }

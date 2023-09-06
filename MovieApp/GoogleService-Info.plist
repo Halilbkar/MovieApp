@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>170907594052-fpd275uackjjonbl3jlcbn6s47aho2gr.apps.googleusercontent.com</string>
+	<string>907822611143-2gil6ammu1stico71ajphcjb9gned9dn.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.170907594052-fpd275uackjjonbl3jlcbn6s47aho2gr</string>
+	<string>com.googleusercontent.apps.907822611143-2gil6ammu1stico71ajphcjb9gned9dn</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA6ll3MBiJXu5XUj_eDFWt3foTtuPpF6z4</string>
+	<string>AIzaSyBX488W_Ab4SIeYSpDjEY-C9A0fzmzjLAg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>170907594052</string>
+	<string>907822611143</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.HalilBkar.MovieApp</string>
 	<key>PROJECT_ID</key>
-	<string>movieapp-9baf4</string>
+	<string>movieapp-8e075</string>
 	<key>STORAGE_BUCKET</key>
-	<string>movieapp-9baf4.appspot.com</string>
+	<string>movieapp-8e075.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:170907594052:ios:cb8c05723737b0c549bb11</string>
+	<string>1:907822611143:ios:edaee9bb8060adcefddce2</string>
 </dict>
 </plist>

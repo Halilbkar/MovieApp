@@ -9,10 +9,12 @@ import Foundation
 
 protocol MoviesPresenterInputs {
     func viewDidLoad()
+    func viewWillAppear()
     func showMoviesTitle() -> [MoviesTitle]?
     func getData(isSelect: MoviesTitle?)
     func addFav(model: Results?)
     func isFav(model: Results?) -> Bool?
+    func toDetail(movie: Results)
 }
 
 final class MoviesPresenter {
@@ -32,6 +34,10 @@ extension MoviesPresenter: MoviesPresenterInputs {
         view?.setViewBackgroundColor(color: "background")
         view?.prepareMoviesUIView()
         interactor?.getCategoryData(category: .trending)
+    }
+    
+    func viewWillAppear() {
+        view?.setTabBarVisibility()
     }
     
     func showMoviesTitle() -> [MoviesTitle]? {
@@ -60,6 +66,10 @@ extension MoviesPresenter: MoviesPresenterInputs {
     
     func addFav(model: Results?) {
         interactor?.addFav(model: model)
+    }
+    
+    func toDetail(movie: Results) {
+        router?.toDetail(movie: movie)
     }
 }
 

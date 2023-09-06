@@ -121,7 +121,7 @@ class FavoritesMoviesUIView: UIView {
             sortedButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: CGFloat.dHeight(padding: 4)),
             sortedButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWidth(padding: 10)),
 
-            favoritesTableView.topAnchor.constraint(equalTo: removeAllButton.bottomAnchor, constant: CGFloat.dHeight(padding: 4)),
+            favoritesTableView.topAnchor.constraint(equalTo: removeAllButton.bottomAnchor, constant: CGFloat.dHeight(padding: 8)),
             favoritesTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             favoritesTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             favoritesTableView.bottomAnchor.constraint(equalTo: bottomAnchor),

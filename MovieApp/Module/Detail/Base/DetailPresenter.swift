@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DetailPresenterInputs {
-    
+    func viewDidLoad()
 }
 
 class DetailPresenter {
@@ -25,9 +25,16 @@ class DetailPresenter {
 }
 
 extension DetailPresenter: DetailPresenterInputs {
-    
+    func viewDidLoad() {
+        view?.prepareDetailUIView()
+        view?.setTabBarVisibility()
+        view?.setViewBackgroundColor(color: "background")
+        interactor?.getTrailer()
+    }
 }
 
 extension DetailPresenter: DetailInteractorOutputs {
-    
+    func trailerModel(model: MovieAndTrailerModel) {
+        view?.trailerModel(model: model)
+    }
 }

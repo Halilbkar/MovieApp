@@ -30,7 +30,7 @@ extension HomeInteractor: HomeInteractorInputs {
         Task {
             try await MoviesService.fetchCategoryMovies(category: .trending) { [weak self] result in
                 guard let self else { return }
-                
+
                 switch result {
                 case .success(let movies):
                     DispatchQueue.main.async { [weak self] in

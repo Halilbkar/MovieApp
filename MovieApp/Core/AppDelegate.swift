@@ -12,7 +12,7 @@ import FirebaseCore
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     override init() {
-        UINavigationBar.appearance().tintColor = .label
+        UINavigationBar.appearance().tintColor = .white
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

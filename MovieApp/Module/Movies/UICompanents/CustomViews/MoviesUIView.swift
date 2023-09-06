@@ -12,6 +12,7 @@ protocol MoviesUIViewProtocol: AnyObject {
     func selectTitle(_ isSelect: MoviesTitle?)
     func addFavorites(model: Results?)
     func isFav(model: Results?) -> Bool?
+    func toDetail(movie: Results)
 }
 
 class MoviesUIView: UIView {
@@ -135,7 +136,7 @@ class MoviesUIView: UIView {
         moviesCollectionView.reloadData()
     }
     
-    public func dataAndRefreshed(model: [Results]) {
+    func dataAndRefreshed(model: [Results]) {
         self.model = model
         self.filteredMovies = model
         moviesCollectionView.reloadData()
@@ -181,7 +182,12 @@ extension MoviesUIView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == moviesTitleCollectionView {
             isSelect = delegate?.showMoviesTitle()?[indexPath.row]
+        }
+        
+        if collectionView == moviesCollectionView {
             
+            let movie = model[indexPath.item]
+            delegate?.toDetail(movie: movie)
         }
     }
     

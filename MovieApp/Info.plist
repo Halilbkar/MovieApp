@@ -9,12 +9,10 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.170907594052-fpd275uackjjonbl3jlcbn6s47aho2gr</string>
+				<string>com.googleusercontent.apps.907822611143-2gil6ammu1stico71ajphcjb9gned9dn</string>
 			</array>
 		</dict>
 	</array>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>&quot;OKEY&quot;</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

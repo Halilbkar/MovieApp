@@ -10,6 +10,7 @@ import UIKit
 protocol MoviesViewProtocol: AnyObject {
     func setViewBackgroundColor(color: String)
     func prepareMoviesUIView()
+    func setTabBarVisibility()
     func dataAndRefreshed(model: [Results])
 }
 
@@ -30,6 +31,12 @@ final class MoviesViewController: UIViewController {
         super.viewDidLoad()
         
         presenter.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter.viewWillAppear()
     }
     
     deinit {
@@ -57,6 +64,10 @@ extension MoviesViewController: MoviesViewProtocol {
         view.addSubview(moviesUIView)
     }
     
+    func setTabBarVisibility() {
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     func dataAndRefreshed(model: [Results]) {
         moviesUIView.dataAndRefreshed(model: model)
     }
@@ -77,5 +88,9 @@ extension MoviesViewController: MoviesUIViewProtocol {
     
     func selectTitle(_ isSelect: MoviesTitle?) {
         presenter.getData(isSelect: isSelect)
+    }
+    
+    func toDetail(movie: Results) {
+        presenter.toDetail(movie: movie)
     }
 }

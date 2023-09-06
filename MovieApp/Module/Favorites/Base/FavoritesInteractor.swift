@@ -34,8 +34,17 @@ extension FavoritesInteractor: FavoritesInteractorInputs {
     }
     
     func deleteAll() {
-        RealmManager.shared.deleteAll { error in
-            print(error.localizedDescription)
+//        RealmManager.shared.deleteAll { error in
+//            print(error.localizedDescription)
+//        }
+//
+        let favMovies = RealmManager.shared.getAll(FavoritesMoviesModel.self).filter ({ $0.userId == UserInfoManager.shared.getUserUid() })
+        
+        for favorite in favMovies {
+            RealmManager.shared.delete(favorite) { [weak self] error in
+                guard let self else { return }
+                print(error.localizedDescription)
+            }
         }
     }
 }
